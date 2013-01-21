@@ -1,0 +1,8 @@
+<div class="news">
+    <p class="meta">{{ "by" | trans }}
+        <a href="{{ url('player_show', {'user_id': news.author.id}) }}">{{ news.author.username }}</a>
+        - {{ news.date.format('d/m/Y - H:i') }}
+        - <strong>{{ news.comments | length }}</strong> {{ "comments" | trans }}
+    </p>
+    {{ news.body | innerBlocks }}
+</div>

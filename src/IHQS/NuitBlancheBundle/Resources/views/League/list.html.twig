@@ -1,0 +1,59 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "Leagues" }}{% endblock %}
+
+{% block content %}
+    <br />
+
+    {% for league in leagues %}
+    <div class="notice notice-war">
+        <h2><a class="no-color" href="{{ url('league_show', { 'league_id' : league.id }) }}">
+            <span>
+                <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ league.country | lower  ~ '.gif') }}" alt="{{ league.country }}" />
+                {{ league.name }}
+            </span>
+        </a></h2>
+        <ul>
+            {% if league.lastSeason %}
+                <li>
+                    <span class="league">{{ "season" | trans }}</span>
+                    <span class="opponent">
+                        <a href="{{ url('season_show', { 'season_id' : league.lastSeason.id }) }}">
+                            #{{ league.lastSeason.number }}
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="league">{{ "division" | trans }}</span>
+                    <span class="opponent">#{{ league.lastSeason.division }}</span>
+                </li>
+                <li>
+                    <span class="league">{{ "stats" | trans }}</span>
+                    <span class="opponent">
+                        <strong class="win">{{ league.lastSeason.wins }}</strong> -
+                        <strong class="draw">{{ league.lastSeason.draws }}</strong> -
+                        <strong class="loss">{{ league.lastSeason.losses }}</strong>
+                    </span>
+                </li>
+                <li>
+                    <span class="league">{{ "next war" | trans }}</span>
+                    {% if league.lastSeason.nextWar %}
+                    <span class="opponent">
+                         <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ league.lastSeason.nextWar.opponentCountry | lower  ~ '.gif') }}" alt="{{ league.lastSeason.nextWar.opponentCountry }}" class="flag" />
+                        {{ league.lastSeason.nextWar.opponentName }}
+                    </span>
+                    <span class="date">{{ league.lastSeason.nextWar.date.format('d m Y - H:i') }}</span>
+                    {% else %}
+                    -
+                    {% endif %}
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <br /><br />
+    <div class="spacer"></div>
+    {% endfor %}
+
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+{% endblock %}

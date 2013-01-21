@@ -1,0 +1,42 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ title | trans }}{% endblock %}
+
+{% block content %}
+        {% if message is not empty %}<div class="flash">{{ message | trans }}</div>{% endif %}
+        <form id="admin-form" method="post" action="" {{ form_enctype(form) }}>
+            {% for game in form.games %}
+            <div class="">
+                    <h3>Game #{{ loop.index }}</h3>
+
+                    {{ form_row(game.date) }}
+                    {{ form_row(game.map) }}
+                    {{ form_row(game.winner) }}
+
+                    {% for player in game.players %}
+                    <div class="composite">
+                        <h3>{{ "Player" | trans }} #{{ loop.index }} - {{ "Team" | trans }} #{{ player.team.vars.value }}</h3>
+
+                        {{ form_widget(player) }}
+                    </div>
+                    {% endfor %}
+            </div>
+            <hr />
+            {% endfor %}
+
+            {{ form_rest(form) }}
+            <div>
+                {% spaceless %}
+                <label for="submit"></label>
+                <input name="submit" class="submit" type="submit" value="{{ "Submit" | trans }}" />
+                {% endspaceless %}
+            </div>
+        </form>
+
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                new nb.contributeWarGame();
+            });
+        </script>
+{% endblock %}

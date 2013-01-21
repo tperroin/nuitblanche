@@ -1,0 +1,50 @@
+    <div class="sub-section wars replays">
+        <table>
+            <caption>{{ "Games" | trans }}</caption>
+            <thead></thead>
+            <tfoot></tfoot>
+            <tbody>
+                {% for game in war.games %}
+                <tr class="{% if loop.last %}last{% endif %}">
+                    <td class="map">
+                        {% if game.games | length > 0 %}
+                        {{ game.games[0].map }}
+                        {% endif %}
+                    </td>
+                    <td class="war-score">&nbsp;</td>
+                    <td class="player player-left">
+                         {% for player in game.games[0].team1 %}
+                            {% if player.player %}<a href="{{ url('player_show', {"user_id": player.player.id}) }}">{% endif %}
+                            {{ player.name }}
+                            {% if player.player %}</a>{% endif %}
+                            <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
+                            <br />
+                         {% endfor %}
+                    </td>
+                    <td class="score match-{{ game.team1Result }}">{{ game.team1Score }}</td>
+                    <td class="separator"></td>
+                    <td class="score match-{{ game.team2Result }}">{{ game.team2Score }}</td>
+                    <td class="player player-right">
+                         {% for player in game.games[0].team2 %}
+                            <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
+                            {% if player.player %}<a href="{{ url('player_show', {"user_id": player.player.id}) }}">{% endif %}
+                            {{ player.name }}
+                            {% if player.player %}</a>{% endif %}
+                            <br />
+                         {% endfor %}
+                    </td>
+                    <td class="date">
+                        {% if game.games | length > 0 %}
+                        {{ game.games[0].date.format('d m Y') }}
+                        {% endif %}
+                    </td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <td class="admin_actions">
+                        <a class="edit" href="{{ url('contribute_war_game', {'game_id': game.id}) }}">({{ "edit" | trans }})</a>
+                    </tr>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,21 @@
+<div class="widget last-wars">
+    <h3>{{ "Latest wars" | trans }}</h3>
+    <ul>
+        {% for war in wars %}
+        <li>
+            <a href="{{ url('war_show', { 'war_id': war.id }) }}">
+                <span class="team">
+                    <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/result_' ~ war.result ~ '.gif') }}" alt="{{ war.result }}" />
+                    <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ war.opponentCountry | lower  ~ '.gif') }}" alt="{{ war.opponentCountry}}" class="flag" />
+                    {{ war.opponentName }}
+                </span>
+                <span class="{{ war.result }}">{{ war.teamScore }}-{{ war.opponentScore }}</span>
+            </a>
+            <span class="little">{{ war.season.league.name }} - {{ war.date.format('d m Y') }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="bottom-link">
+        <a href="{{ url('war_list') }}">{{ "All wars" | trans }}</a>
+    </div>
+</div>

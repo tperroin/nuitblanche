@@ -1,0 +1,9 @@
+{% if not is_granted('ROLE_USER') %}
+    <div class="register">
+        <ul>
+            <li>
+                <a href="{{ url('_secured_register') }}">{{ "Register" | trans }}</a>
+            </li>
+        </ul>
+    </div>
+{% endif %}

@@ -1,0 +1,19 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "Next wars" | trans }}{% endblock %}
+
+<div class="notice">
+    <ul>
+        {% for league in leagues %}
+        <li>
+            <span class="league">{{ league.name }}</span>
+            <span class="opponent">                    
+                 <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ league.nextWar.opponentCountry | lower  ~ '.gif') }}" alt="{{ league.nextWar.opponentCountry }}" class="flag" />
+                {{ league.nextWar.opponentName }}
+            </span>
+            <span class="date">{{ league.nextWar.date.format('d m Y - H:i') }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="spacer"></div>

@@ -1,0 +1,56 @@
+{% extends 'IHQSNuitBlancheBundle::layout_home.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}   
+    <div class="block block-3">
+        {% include "IHQSNuitBlancheBundle:News:_teasers.html.twig" with { 'news': news, 'title': 'Nuit Blanche News' } %}
+    </div>
+    <div class="block block-3 block-last">
+        {% include "IHQSNuitBlancheBundle:News:_teasers.html.twig" with { 'news': newsCommunity, 'title': 'Community News' } %}
+    </div>
+    <div class="spacer"></div>
+
+    <div class="block block-4">
+        {% render "IHQSNuitBlancheBundle:War:_next" %}
+    </div>
+    <div class="block block-1 block-last">
+        
+        <div class="promote promote-tournaments">
+            <a href="#">{{ "Tournaments" | trans }}</a>
+        </div>
+    </div>
+    <div class="spacer"></div>
+
+    <div class="block block-4">
+        <a href="http://www.intkeys.com" target="_blank"><img src="http://www.clan-nuitblanche.org/intkeys-banner-520x100.jpg" /></a>
+    </div>
+    <div class="block block-1 block-last">
+        <div class="promote promote-replays">
+            <a href="{{ url('replay_list') }}">{{ "Replays" | trans }}</a>
+        </div>
+    </div>
+    <div class="spacer"></div>
+
+    <div class="block block-2">
+        {% render "IHQSNuitBlancheBundle:Player:_connected" %}
+    </div>
+    <div class="block block-2-mid">
+        {% render "IHQSNuitBlancheBundle:Ts3:_channels" %}
+    </div>
+    <div class="block block-2">
+        {% render "IHQSForumBundle:Topic:_latest" %}
+    </div>
+    <div class="block block-2-mid block-last">
+        {% render "IHQSNuitBlancheBundle:Replay:_latest" %}
+    </div>
+    <div class="spacer"></div>
+
+{% endblock %}
+
+{% block right %}
+    {% render "IHQSNuitBlancheBundle:Team:_sections" %}
+    {% render "IHQSNuitBlancheBundle:War:_latest" %}
+    {% include "IHQSNuitBlancheBundle:Main:_partners.html.twig" %}
+{% endblock %}

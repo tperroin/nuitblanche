@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="nb.form.news.class">IHQS\NuitBlancheBundle\Form\NewsFormType</parameter>
+        <parameter key="nb.form.player.class">IHQS\NuitBlancheBundle\Form\PlayerFormType</parameter>
+        <parameter key="nb.form.replay.class">IHQS\NuitBlancheBundle\Form\ReplayFormType</parameter>
+        <parameter key="nb.form.user.class">IHQS\NuitBlancheBundle\Form\UserFormType</parameter>
+        <parameter key="nb.form.war_new.class">IHQS\NuitBlancheBundle\Form\WarFormType</parameter>
+        <parameter key="nb.form.war_game.class">IHQS\NuitBlancheBundle\Form\WarGameFormType</parameter>
+    </parameters>
+
+</container>

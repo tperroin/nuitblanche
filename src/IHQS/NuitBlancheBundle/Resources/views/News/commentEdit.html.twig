@@ -1,0 +1,38 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+{% set news = comment.news %}
+{% block title %}
+    <img src="{% if news.team %}{{ news.team.icon }}{% else %}{{ news.teamGame.icon }}{% endif %}" class="flag" />
+    <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ news.lang  ~ '.gif') }}" alt="{{ news.lang }}" class="flag" />
+
+    {{ news.title }}
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="admin_actions">
+        <a class="edit" href="{{ url('contribute_news_edit', {'news_id': news.id}) }}">({{ "edit" | trans }})</a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% include "IHQSNuitBlancheBundle:News:details.html.twig" with { 'news': news } %}
+    <br />
+    <h2>{{ "Comments" | trans }}</h2>
+    {% if news.comments | length > 0 %}
+        <ol class="comments">
+        {% for loopComment in news.comments %}
+            {% if loopComment.id != comment.id %}
+                {% include "IHQSNuitBlancheBundle:News:_commentShow.html.twig" with { 'comment': loopComment, 'number' : loop.index } %}
+            {% else %}
+        </ol>
+                {% include "IHQSNuitBlancheBundle:News:_commentNew.html.twig" with { 'form': form, 'title': "Edit your comment" } %}
+                <div class="spacer"></div>
+        <ol class="comments">
+            {% endif %}
+        {% endfor %}
+        </ol>
+    {% else %}
+        <p>
+            <em>{{ "no comment posted yet" | trans }}</em>
+        </p>
+        <br />
+    {% endif %}
+{% endblock %}

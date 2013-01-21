@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="nb.model.comment.class">IHQS\NuitBlancheBundle\Entity\Comment</parameter>
+        <parameter key="nb.model.game.class">IHQS\NuitBlancheBundle\Entity\Game</parameter>
+        <parameter key="nb.model.game_player.class">IHQS\NuitBlancheBundle\Entity\GamePlayer</parameter>
+        <parameter key="nb.model.league.class">IHQS\NuitBlancheBundle\Entity\League</parameter>
+        <parameter key="nb.model.news.class">IHQS\NuitBlancheBundle\Entity\News</parameter>
+        <parameter key="nb.model.replay.class">IHQS\NuitBlancheBundle\Entity\Replay</parameter>
+        <parameter key="nb.model.season.class">IHQS\NuitBlancheBundle\Entity\Season</parameter>
+        <parameter key="nb.model.team.class">IHQS\NuitBlancheBundle\Entity\Team</parameter>
+        <parameter key="nb.model.user.class">IHQS\NuitBlancheBundle\Entity\User</parameter>
+        <parameter key="nb.model.war.class">IHQS\NuitBlancheBundle\Entity\War</parameter>
+        <parameter key="nb.model.war_game.class">IHQS\NuitBlancheBundle\Entity\WarGame</parameter>
+        <parameter key="nb.model.sc2profile.class">IHQS\NuitBlancheBundle\Entity\SC2Profile</parameter>
+        <parameter key="nb.model.wowprofile.class">IHQS\NuitBlancheBundle\Entity\WoWProfile</parameter>
+
+        <parameter key="nb.manager.comment.class">IHQS\NuitBlancheBundle\Model\CommentRepository</parameter>
+        <parameter key="nb.manager.game.class">IHQS\NuitBlancheBundle\Model\GameRepository</parameter>
+        <parameter key="nb.manager.game_player.class">IHQS\NuitBlancheBundle\Model\GamePlayerRepository</parameter>
+        <parameter key="nb.manager.league.class">IHQS\NuitBlancheBundle\Model\LeagueRepository</parameter>
+        <parameter key="nb.manager.news.class">IHQS\NuitBlancheBundle\Model\NewsRepository</parameter>
+        <parameter key="nb.manager.replay.class">IHQS\NuitBlancheBundle\Model\ReplayRepository</parameter>
+        <parameter key="nb.manager.season.class">IHQS\NuitBlancheBundle\Model\SeasonRepository</parameter>
+        <parameter key="nb.manager.team.class">IHQS\NuitBlancheBundle\Model\TeamRepository</parameter>
+        <parameter key="nb.manager.user.class">IHQS\NuitBlancheBundle\Model\UserRepository</parameter>
+        <parameter key="nb.manager.war.class">IHQS\NuitBlancheBundle\Model\WarRepository</parameter>
+        <parameter key="nb.manager.war_game.class">IHQS\NuitBlancheBundle\Model\WarGameRepository</parameter>
+        <parameter key="nb.manager.sc2profile.class">IHQS\NuitBlancheBundle\Model\SC2ProfileRepository</parameter>
+        <parameter key="nb.manager.wowprofile.class">IHQS\NuitBlancheBundle\Model\WoWProfileRepository</parameter>
+    </parameters>
+
+    <services>
+        <!-- Document manager -->
+        <service id="nb.entity_manager" alias="doctrine.orm.entity_manager" />
+
+        <!-- Repositories -->
+        <service class="%nb.manager.comment.class%" id="nb.manager.comment" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.comment.class%</argument>
+        </service>
+        <service class="%nb.manager.game.class%" id="nb.manager.game" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.game.class%</argument>
+        </service>
+        <service class="%nb.manager.game_player.class%" id="nb.manager.game_player" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.game_player.class%</argument>
+        </service>
+        <service class="%nb.manager.league.class%" id="nb.manager.league" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.league.class%</argument>
+        </service>
+        <service class="%nb.manager.news.class%" id="nb.manager.news" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.news.class%</argument>
+        </service>
+        <service class="%nb.manager.replay.class%" id="nb.manager.replay" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.replay.class%</argument>
+            <call method="setReplayProcessor">
+                <argument type="service" id="nb.replay.processor" />
+            </call>
+        </service>
+        <service class="%nb.manager.season.class%" id="nb.manager.season" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.season.class%</argument>
+        </service>
+        <service class="%nb.manager.team.class%" id="nb.manager.team" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.team.class%</argument>
+        </service>
+        <service class="%nb.manager.user.class%" id="nb.manager.user" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.user.class%</argument>
+        </service>
+        <service class="%nb.manager.war.class%" id="nb.manager.war" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.war.class%</argument>
+        </service>
+        <service class="%nb.manager.war_game.class%" id="nb.manager.war_game" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.war_game.class%</argument>
+        </service>
+
+        <service class="%nb.manager.sc2profile.class%" id="nb.manager.sc2profile" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.sc2profile.class%</argument>
+        </service>
+        <service class="%nb.manager.wowprofile.class%" id="nb.manager.wowprofile" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.wowprofile.class%</argument>
+        </service>
+    </services>
+
+</container>

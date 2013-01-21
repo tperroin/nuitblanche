@@ -1,0 +1,15 @@
+<div class="notice notice-war next-wars">
+    <h2>{{ "Next Wars" | trans }}</h2>
+    <ul>
+        {% for war in wars %}
+        <li>
+            <span class="league">{{ war.season.league.name }} #{{  war.season.number }}</span>
+            <span class="opponent">
+                 <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ war.opponentCountry | lower  ~ '.gif') }}" alt="{{ war.opponentCountry }}" class="flag" />
+                {{ war.opponentName }}
+            </span>
+            <span class="date">{{ war.date.format('d m Y - H:i') }}</span>
+        <li>
+        {% endfor %}
+    </ul>
+</div>

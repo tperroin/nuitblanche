@@ -1,0 +1,31 @@
+{% extends 'ForumBundle::layout.html.twig' %}
+
+{% block title %}{{ "New topic" | trans }}{% endblock %}
+
+{% block content %}
+<div class="forum topic_new">
+    <ul class="crumbs filters">
+        <li class="first"><a href="{{ path('forum_index') }}">{{ "Forum" | trans }}</a></li>
+        <li class="last">{{ "New topic" | trans }}</li>
+    </ul>
+    {% if not is_granted('ROLE_USER') %}
+    <p class="login">
+        {{ "Please" | trans }}
+        <strong>{{ "log in" | trans }} </strong>
+        {{ "or" | trans }}
+        <a href="{{ url('_secured_register') }}">{{ "register" | trans }}</a>
+        {{ "in order to post comments" | trans }}
+    </p>
+    {% else %}
+        <div class="main">
+            <form id="admin-form"  action="{{ path("forum_category_topic_create", {"slug": category.slug}) }}" method="post">
+                {{ form_widget(form) }}
+                <button type="submit" name="create">{{ "Create topic" | trans }}</button>
+                <div class="cancel">
+                    <a href="{{ path('forum_index') }}">{{ "Cancel" | trans }}</a>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+    <ul class="filters">
+        {% for team in teams %}
+        <li class="{% if loop.index == 1 %}first{% endif %}">
+            <span>
+                <a href="{{ url('team_show', { "team_id": team.id }) }}">{{ team.name }}</a>
+            </span>
+        </li>
+        {% endfor %}
+        <li class="last">
+            <a href="{{ url('player_list') }}">{{ "Website's user list" | trans }}</a>
+        </li>
+    </ul>

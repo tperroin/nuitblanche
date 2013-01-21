@@ -1,0 +1,60 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "League" | trans }} : {{ league.name }}{% endblock %}
+
+{% block content %}
+    <br />
+
+    {% for season in league.seasons %}
+    <div class="notice notice-war{% if season.ended %}-ended{% endif %}">
+        <h2><a class="no-color" href="{{ url('season_show', { 'season_id' : season.id }) }}"><span>{{ "Season" | trans }} {{ season.number }}</span></a></h2>
+        <ul>
+            {% if season.ended %}
+            <li>
+                <span class="league">{{ "end date" | trans }}</span>
+                <span class="opponent">{{ season.endDate.format('d/m/Y') }}</span>
+            </li>
+            {% else %}
+            <li>
+                <span class="league">{{ "Season" | trans }}</span>
+                <span class="opponent">#{{ season.number }}</span>
+            </li>
+            {% endif %}
+            <li>
+                <span class="league">{{ "division" | trans }}</span>
+                <span class="opponent">#{{ season.division }}</span>
+            </li>
+            <li>
+                <span class="league">{{ "stats" | trans }}</span>
+                <span class="opponent">
+                    <strong class="win">{{ season.wins }}</strong> -
+                    <strong class="draw">{{ season.draws }}</strong> -
+                    <strong class="loss">{{ season.losses }}</strong>
+                </span>
+            </li>
+
+            {% if season.ended %}
+            <li>
+                <span class="league">{{ "position" | trans }}</span>
+                <span class="opponent">#{{ season.position }}</span>
+            </li>
+            {% else %}
+            <li>
+                <span class="league">{{ "next war" | trans }}</span>
+                {% if season.nextWar %}
+                <span class="opponent">
+                     <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ season.nextWar.opponentCountry | lower  ~ '.gif') }}" alt="{{ season.nextWar.opponentCountry }}" class="flag" />
+                    {{ season.nextWar.opponentName }}
+                </span>
+                <span class="date">{{ season.nextWar.date.format('d m Y - H:i') }}</span>
+                {% else %}
+                -
+                {% endif %}
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <br /><br />
+    <div class="spacer"></div>
+    {% endfor %}
+{% endblock %}

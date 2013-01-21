@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="IHQS\TournamentBundle\Entity\Match" table="tournament_match" repository-class="IHQS\TournamentBundle\Entity\MatchRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="winner" column="winner" type="integer" nullable="true" />
+
+        <field name="order" column="match_order" type="integer" />
+
+        <field name="player1Score" column="player_1_score" type="integer" />
+
+        <field name="player2Score" column="player_2_score" type="integer" />
+
+        <many-to-one target-entity="RoundGroup" field="group" inversed-by="matches">
+            <join-column name="group_id" referenced-column-name="id" />
+        </many-to-one>
+
+<!-- This fields are mapped in the EventSubscriber\MetadataloadedSubscriber class
+
+        <many-to-one target-entity="%ihqs_tournament.model.user.class%" field="player1">
+            <join-column name="player1_id" referenced-column-name="id" />
+        </many-to-one>
+
+        <many-to-one target-entity="%ihqs_tournament.model.user.class%" field="player2">
+            <join-column name="player2_id" referenced-column-name="id" />
+        </many-to-one>
+-->
+
+    </entity>
+
+</doctrine-mapping>

@@ -1,0 +1,20 @@
+{% extends 'ForumBundle::layout.html.twig' %}
+
+{% block title %}{{ "Forum" | trans }}{% endblock %}
+
+{% block content %}
+<div class="forum forum_index">
+    <ul class="crumbs filters">
+        <li class="first last">&nbsp;</li>
+    </ul>
+    <div class="side categories">
+        <h2>{{ "Categories" | trans }}</h2>
+        {% render 'ForumBundle:Category:list' %}
+    </div>
+    <div class="main topics">
+        <h2>{{ "Latest topics" | trans }}</h2>
+        {% render 'ForumBundle:Topic:list'  with {"category": null, "pagerOptions": { 'page': 1 }} %}
+    </div>
+</div>
+{% endblock %}
+

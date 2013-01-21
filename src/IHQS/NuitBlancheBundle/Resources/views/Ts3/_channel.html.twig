@@ -1,0 +1,20 @@
+<li>
+    <strong>{{ name }}</strong> ({{ info.clients | length }})
+    <ul class="ts3-users">
+    {% if info.clients | length > 0 %}
+        {% for client in info.clients %}
+        <span class="team">
+            <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/player_status_online.gif') }}" alt="online on teamspeak3" />
+            {{ client }}
+        </span>
+        {% endfor %}
+    {% endif %}
+    </ul>
+    {% if info.channels | length > 0 %}
+    <ul class="ts3-subchans">
+        {% for name,info in info.channels %}
+        {% include "IHQSNuitBlancheBundle:Ts3:_channel.html.twig" with { "name":name, "info": info } %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+</li>

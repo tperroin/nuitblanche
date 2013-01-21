@@ -1,0 +1,23 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "Watch video" | trans }}{% endblock %}
+
+{% block content %}
+    <ul class="filters filters-video">
+        <li class="first">
+            <a href="{{ url('stream_list') }}">{{ "View archives" | trans }}</a>
+        </li>
+        <li class="last stream-{% render "IHQSNuitBlancheBundle:Stream:_status" %}"">
+            <a href="{{ url('stream_live') }}">Live</a>
+        </li>
+    </ul>
+    <br />
+
+    <iframe
+        width="520" height="320"
+        src="http://cdn.livestream.com/embed/nuitblanchegaming?layout=4&clip={{ clip_id }}&color=0xe7e7e7&iconColorOver=0x888888&iconColor=0x777777&autoPlay=false&mute=false&allowchat=true"
+        style="border:0; outline:0"
+        frameborder="0"
+        scrolling="no">
+    </iframe>
+{% endblock %}

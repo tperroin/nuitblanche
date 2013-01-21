@@ -1,0 +1,41 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "Wars History" | trans }}{% endblock %}
+
+{% block content %}
+    <div class="sub-section wars">
+        <table>
+            <caption>{{ "Wars History" | trans }}</caption>
+            <thead></thead>
+            <tfoot></tfoot>
+            <tbody>
+                {% for war in wars %}
+                <tr class="{% if loop.last %}last{% endif %}">
+                    <td class="team">
+                        <a href="{{ url('season_show', { 'season_id': war.season.id }) }}">
+                            {{ war.season.league.name }} s.{{ war.season.number }}
+                        </a>
+                    </td>
+                    <td class="player player-left">
+                        <img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/flags/FR.gif') }}" />
+                        {{ war.team.tag }}
+                    </td>
+                    <td class="score match-{{ war.result }}">{{ war.teamScore}}</td>
+                    <td class="separator"></td>
+                    <td class="score match-{{ war.opponentResult }}">{{ war.opponentScore }}</td>
+                    <td class="player player-right">
+                         <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ war.opponentCountry | lower ~ '.gif') }}" alt="{{ war.opponentCountry }}" class="flag" />
+                        {{ war.opponentName }}
+                    </td>
+                    <td class="date">{{ war.date.format('d m Y') }}</td>
+                    <td class="view">
+                        <a href="{{ url('war_show', { 'war_id': war.id }) }}"><img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/watch.png') }}" alt="{{ "details" | trans }}"></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="spacer"></div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+{% endblock %}

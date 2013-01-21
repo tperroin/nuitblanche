@@ -1,0 +1,948 @@
+/**
+ * Notice
+ */
+div.notice
+{
+    height: 100px;
+    width: 520px;
+
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+
+    background: white;
+}
+
+div.notice h2
+{
+    width: 234px;
+    height: 100px;
+    float: left;
+    background: url(../images/logo_notice.jpg);
+
+    margin-top: 0px;
+    margin-right: 10px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 10px #888;
+    -moz-text-shadow: 0 0 10px #888;
+    -webkit-text-shadow: 0 0 10px #888;
+}
+div.next-wars h2
+{
+    line-height: 100px;
+    text-align: center;
+    font-size: 20px;
+}
+div.notice-war h2
+{
+    background: url(../images/logo_league.jpg);
+}
+div.notice-war-ended h2
+{
+    background: url(../images/logo_league_ended.jpg);
+}
+div.notice h2 span
+{
+    display: block;
+    margin-top:-12px;
+}
+
+div.notice ul
+{
+    padding-top: 10px;
+}
+div.next-wars ul
+{
+    padding-top: 8px;
+}
+
+div.notice ul li
+{
+    padding: 3px 0;
+}
+div.next-wars ul li
+{
+    padding: 2px 0;
+}
+
+div.notice ul li span
+{
+    display: inline-block;
+    width: 95px;
+}
+div.notice ul li span.league
+{
+    width: 70px;
+}
+
+div.notice ul li span.league
+{
+    font-weight: bold;
+}
+
+div.notice ul li span.date
+{
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/**
+ * Description joueurs
+ */
+div.player-item
+{
+    margin: 20px 20px 20px 0;
+    height: 100px;
+    width: 250px;
+
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+
+    z-index: 1;
+    float: left;
+    background: white;
+}
+div.item-wide
+{
+    width: 520px;
+    margin: 20px 0;
+    float: none;
+}
+
+div.right
+{
+    margin-right: 0;
+}
+
+div.player-item h2
+{
+    width: 100px;
+    height: 100px;
+    float: left;
+
+    margin-right: 10px;
+    color: white;
+    text-shadow: 0 0 10px #888;
+    -moz-text-shadow: 0 0 10px #888;
+    -webkit-text-shadow: 0 0 10px #888;
+
+    z-index: 100;
+}
+div.player-item h2 span
+{
+    display: block;
+    margin-top:-24px;
+
+    height:24px;
+    padding-left:30px;
+    width:225px;
+
+    z-index: 100;
+}
+
+div.player-item img.race
+{
+    float: right;
+    z-index: 2;
+}
+
+div.player-item div.avatar-canvas
+{
+    float: left;
+    margin-right:-100px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    overflow: hidden;
+}
+div.player-item div.avatar-canvas img.avatar
+{
+    height:100px;
+    width:auto; 
+}
+
+/*
+div.player-item div.avatar-canvas:hover
+{
+    position:absolute;
+    width: 520px;
+    height: auto;
+    z-index: 1001;
+}
+div.player-item div.avatar-canvas:hover img.avatar
+{
+    width: 520px;
+    height:auto;
+    z-index: 1001;
+    margin-left: 0;
+}
+*/
+
+div.player-item ul
+{
+    padding-top: 16px;
+    height: 84px;
+    float: left;
+    width: 310px;
+
+    oveflow:hidden;
+
+}
+
+div.player-item ul li
+{
+    padding: 3px 0;
+/*  overflow: hidden; */
+}
+
+div.player-item ul li span.stat
+{
+    width: 55px;
+    font-weight: bold;
+    display:inline-block;
+}
+
+/**
+ * Replays
+ */
+div.replay-info
+{
+    margin: 20px 0;
+    padding: 10px;
+    width: 500px;
+
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    background: white;
+}
+div.replay-info .teams,
+div.replay-info .players
+{
+    height: 70px;
+    margin-bottom: 20px;
+}
+div.replay-info img.race
+{
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    margin-top: -20px;
+}
+
+div.replay-info div.team1-container,
+div.replay-info div.team2-container
+{
+    float: left;
+    width: 220px;
+}
+div.replay-info div.team1
+{
+    text-align: left;
+}
+div.replay-info div.team2
+{
+    text-align: right;
+}
+div.replay-info div.versus
+{
+    float: left;
+    text-align: center;
+    display: table;
+    width: 60px;
+    height: 100%;
+}
+div.replay-info div.team1,
+div.replay-info div.team2
+{
+    width: 220px;
+}
+div.war-info div.team1,
+div.war-info div.team2
+{
+    float: left;
+}
+div.replay-info .players div.team1 p,
+div.replay-info .players div.team2 p
+{
+    display: inline-block;
+    height: 50px;
+    padding-top: 10px;
+}
+div.replay-info .players div.team1 span.player,
+div.replay-info .players div.team2 span.player
+{
+    font-weight: bold;
+    display: inline-block;
+}
+div.replay-info .teams div.team1,
+div.replay-info .teams div.team2
+{
+    width: 190px;
+    font-size: 40px;
+
+    text-shadow: 3px 3px 5px #888;
+    -moz-text-shadow: 3px 3px 5px #888;
+    -webkit-text-shadow: 3px 3px 5px #888;
+}
+div.replay-info .teams .score
+{
+    width: 60px;
+    float: left;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+
+    text-shadow: 3px 3px 5px #888;
+    -moz-text-shadow: 3px 3px 5px #888;
+    -webkit-text-shadow: 3px 3px 5px #888;
+}
+
+div.replay-info .game-info
+{
+    height: 120px;
+}
+div.replay-info .apm-chart
+{
+    height: 245px;
+}
+
+div.replay-info div.obs
+{
+    margin-top: 10px;
+}
+
+div.replay-info div.obs span.stat,
+div.replay-info div.obs span.data
+{
+    display: block;
+    float: left;
+}
+div.replay-info div.obs span.stat
+{
+    width:58px;
+}
+div.replay-info div.obs span.data
+{
+    width:400px;
+}
+
+div.replay-info ul.log
+{
+    margin: 5px 0;
+    width: 500px;
+}
+div.replay-info ul.log li span.time
+{
+    width: 50px;
+    display: inline-block;
+    color: rgb(136, 136, 136);
+    padding-left: 30px;
+}
+div.replay-info ul.log li span.name
+{
+    font-weight: bold;
+    width: 100px;
+    display: inline-block;
+}
+div.replay-info ul.log li span.message
+{
+    width: 300px;
+    display: inline-block;
+}
+
+div.replay-info ul,
+div.sub-section ul
+{
+    float: left;
+    width: 250px;
+}
+div.replay-info  span.stat,
+div.sub-section span.stat
+{
+    padding-left: 15px;
+    width: 40px;
+    font-weight: bold;
+    display:inline-block;
+}
+div.game-info span.stat
+{
+    width: 60px;
+}
+div.stats ul li span.stat
+{
+    font-size: 10px;
+}
+div.replay-info ul li span.long,
+div.sub-section ul li span.long
+{
+    width: 92px;
+}
+div.replay-info img.chart
+{
+    margin-left: -10px;
+}
+div.replay-info div.versus span
+{
+    font-family: Georgia;
+    line-height: 50px;
+    font-size: 36px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+
+    text-shadow: 0 0 10px #888;
+    -moz-text-shadow: 0 0 10px #888;
+    -webkit-text-shadow: 0 0 10px #888;
+}
+
+div.news-teaser h3,
+div.replay-info h3
+{
+    color: white;
+    font-family: Georgia;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: -24px;
+    padding-left: 30px;
+
+    text-shadow: 0 0 10px #000000;
+    -moz-text-shadow: 0 0 10px #000000;
+    -webkit-text-shadow: 0 0 10px #000000;
+}
+
+div.news-teaser h3
+{
+    color: #395674;
+    margin-top: -20px;
+    padding-left: 0px;
+}
+
+div.game-info h3
+{
+    margin-top: -16px;
+    text-align: center;
+}
+
+div.sub-section
+{
+    margin: 20px 0;
+    padding: 10px;
+    width: 500px;
+
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    background: white;
+}
+
+div.sub-section li
+{
+    height: 20px;
+}
+div.sub-section ul.short
+{
+    width: 215px;
+}
+div.sub-section ul.long
+{
+    width: 270px;
+}
+div.sub-section ul.long span.data
+{
+    width: 160px;
+    display: inline-block;
+}
+
+div.wide ul
+{
+    width: auto;
+    float: none;
+}
+
+div.wide ul li a
+{
+    display: inline-block;
+    width: 250px;
+}
+
+div.wide ul li span.little
+{
+    display: inline-block;
+    width: 120px;
+}
+
+/**
+ * News
+ */
+.news p,
+.news ul
+{
+    margin-bottom: 10px;
+    text-align: justify;
+}
+.news ul li
+{
+    list-style: circle inside;
+}
+.news .meta
+{
+    font-size: 10px;
+    font-style: italic;
+}
+
+.videos img
+{
+    height: 100px;
+}
+.comments li
+{
+    margin: 20px 0;
+    min-height: 100px;
+    width: 520px;
+
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+
+    background: white;
+}
+.comments li li
+{
+    list-style: circle inside;
+    padding-left: 15px;
+
+    margin: 0px 0;
+    min-height: 0px;
+    width: auto;
+
+    box-shadow: 0 0 0px #888;
+    -moz-box-shadow: 0 0 0px #888;
+    -webkit-box-shadow: 0 0 0px #888;
+
+    background: none;
+}
+
+.comments li a.avatar
+{
+    float: left;
+    margin-right: 10px;
+    height: 100px;
+}
+.comments li a.avatar img {
+    height: 100px;
+}
+.comments li div.main
+{
+    border-left: 1px solid #EEE;
+    padding: 15px;
+    text-align: justify;
+}
+
+.comments li .meta
+{
+    padding: 5px 0;
+    font-style: italic;
+    font-size: 10px;
+}
+.comments span.play
+{
+    background: none;
+    height: 100px;
+    width: 178px;
+    position: relative;
+    display: block;
+    left: 0;
+    top: -100px;
+}
+.comments span.play:hover
+{
+    background: url('../images/ico/play.png') 65px 26px no-repeat transparent;
+}
+
+img.flag
+{
+    vertical-align:middle;
+}
+
+div.wars table,
+div.replays table
+{
+}
+div.replays table caption,
+div.wars table caption
+{
+    display: none;
+}
+div.replays table tr,
+div.wars table tr
+{
+    height: 20px;
+    border-bottom: 1px solid #eee;
+    margin: 3px 0;
+}
+
+div.replays table tr.last,
+div.wars table tr.last
+{
+    border-bottom: 1px solid white;
+}
+div.replays table td,
+div.wars table td
+{
+    height: 20px;
+    vertical-align: middle;
+}
+div.wars table td.team
+{
+    width: 100px;
+}
+div.wars table td.war-team
+{
+    width: 20px;
+    font-weight: bold;
+}
+div.replays table td.date,
+div.wars table td.date
+{
+    width: 100px;
+    font-size: 10px;
+}
+div.replays table td.downloads
+{
+    width: 30px;
+}
+div.wars table td.player
+{
+    width: 135px;
+    font-weight: bold;
+}
+div.replays table td.player-left,
+div.wars table td.player-left
+{
+    text-align: right;
+    padding-right: 5px;
+}
+div.replays table td.player-right,
+div.wars table td.player-right
+{
+    text-align: left;
+    padding-left: 5px;
+}
+div.wars table td.score
+{
+    width: 20px;
+}
+div.wars table td.match-win
+{
+    text-align: center;
+    font-weight: bold;
+    background: green;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0f0), to(#fff));
+    background: -moz-linear-gradient(bottom, #0f0, #fff);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#0f0, endColorstr=#fff)";
+}
+
+div.wars table td.match-loss
+{
+    text-align: center;
+    font-weight: bold;
+    background: red;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#fff));
+    background: -moz-linear-gradient(bottom, #f00, #fff);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#f00, endColorstr=#fff)";
+}
+
+div.wars table td.match-draw
+{
+    text-align: center;
+    font-weight: bold;
+}
+
+div.replays table td.map
+{
+	font-size: 10px;
+	width: 100px;
+}
+div.replays table td.player
+{
+	width: 145px;
+	font-weight: bold;
+}
+
+div.wars table td.view,
+div.replays table td.view,
+div.replays table td.download
+{
+	width: 20px;
+}
+
+fieldset legend
+{
+    margin-bottom: 10px;
+}
+
+div#comment-form p.login
+{
+    display: list-item;
+    list-style: circle outside none;
+    margin-left: 15px;
+}
+
+div#comment-form fieldset
+{
+    float: left;
+}
+div#comment-form form label
+{
+    display: none;
+}
+
+div#comment-form fieldset#submit_fieldset legend
+{
+    visibility: hidden;
+    width: 100px;
+}
+
+div#comment-form fieldset#submit_fieldset input
+{
+    height: 99px;
+    width: 99px;
+    color: white;
+    font-weight: bold;
+    background: #395674;
+    border: 1px solid black;
+}
+
+div#comment-form form textarea
+{
+    height: 90px;
+    width: 410px;
+    padding: 5px;
+}
+
+form#admin-form div
+{
+    margin-bottom: 5px;
+}
+
+form#admin-form div label,
+form#admin-form div h3
+{
+    color: #395674;
+    font-size: 16px;
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    vertical-align: top;
+    line-height: 30px;
+}
+form#admin-form div h3
+{
+    width: 200px;
+}
+
+form#admin-form div input,
+form#admin-form div select
+{
+    padding: 2px;
+    width: 364px;
+    height: 26px;
+    border: 1px solid white;
+}
+
+form#admin-form div select
+{
+    height: 32px;
+    line-height: 32px;
+}
+
+form#admin-form div input:focus,
+form#admin-form div select:focus,
+form#admin-form div textarea:focus
+{
+    border-color: #395674;
+}
+
+form#admin-form div input.submit
+{
+    color: white;
+    font-weight: bold;
+    background: #395674;
+    border: 1px solid black;
+    width: 370px;
+    height: 32px;
+}
+
+form#admin-form div div.select-datetime,
+form#admin-form div div.input-file
+{
+    display: inline-block;
+    width: 370px;
+}
+
+form#admin-form div select
+{
+    width: 370px;
+}
+
+form#admin-form div.markItUp
+{
+    width: 451px;
+}
+
+form#admin-form div textarea
+{
+    padding: 2px;
+    height: 336px;
+    width: 432px;
+    border: 1px solid white;
+}
+
+form#admin-form div select.select-date-year,
+form#admin-form div select.select-date-month
+{
+    width: 70px;
+}
+
+form#admin-form div select.select-date-day,
+form#admin-form div select.select-time-hour,
+form#admin-form div select.select-time-minutes
+{
+    width: 50px;
+}
+
+
+form#admin-form ul.error-message
+{
+    padding-left: 170px;
+    color: red;
+    margin-bottom: 10px;
+    background: url('../images/ico/arrow_red.gif') no-repeat 150px 1px;
+    margin-top: 5px;
+}
+
+form#admin-form div.error label
+{
+    color: red;
+}
+
+form#admin-form div.error input,
+form#admin-form div.error select,
+form#admin-form div.error textarea
+{
+    border: 1px solid red;
+}
+
+form#admin-form div.composite
+{
+    margin-left: 50px;
+}
+
+form#admin-form div.composite input,
+form#admin-form div.composite select,
+form#admin-form div.composite textarea
+{
+    width: 314px;
+}
+
+
+table.team-player-list
+{
+    margin-top: 20px;
+}
+
+table.team-player-list caption
+{
+    display: none;
+}
+
+table.team-player-list thead tr th,
+table.team-player-list tfoot tr th
+{
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.team-player-list tbody tr
+{
+    background: white;
+    margin: 2px 0;
+}
+
+table.team-player-list tbody tr td
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.widget div.bottom-link a
+{
+    padding: 3px;
+    width: 120px;
+    text-align: center;
+    margin-top: 15px;
+    background-color: #EEE;
+    border-right: 1px solid #CCC;
+}
+
+div.flash
+{
+    background: rgb(255, 122, 122);
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+div.upgrades
+{
+    margin-bottom: 20px;
+}
+div.upgrades ol li
+{
+    list-style: decimal inside;
+}
+
+.news-teaser
+{
+    margin: 10px 0;
+    padding: 10px;
+    background-color: white;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+}
+
+img.bnet-rank
+{
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+
+ol.comments li ul.actions {
+    float: right;
+}
+    ol.comments li ul.actions li {
+        float: left;
+        margin: 5px 5px 0 0;
+        padding: 0;
+        list-style: none;
+    }
+        ol.comments li ul.actions li a {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+        ol.comments li ul.actions li.edit a {
+            background: url('/bundles/ihqsnuitblanche/images/ico/edit.jpg');
+        }
+        ol.comments li ul.actions li.delete a {
+            background: url('/bundles/ihqsnuitblanche/images/ico/delete.jpg');
+        }
+            ol.comments li ul.actions li a span {
+                display: none;
+            }

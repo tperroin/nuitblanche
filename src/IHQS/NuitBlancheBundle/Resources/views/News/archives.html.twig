@@ -1,0 +1,24 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "News archives" | trans }}{% endblock %}
+
+{% block content %}
+<div class="sub-section wide">
+    <ul>
+        {% for new in news %}
+        <li>
+            <a href="{{ url('news_show', { 'news_id' : new.id }) }}">
+            <img src="{% if new.team %}{{ new.team.icon }}{% else %}{{ new.teamGame.icon }}{% endif %}" class="flag" />
+            <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ new.lang ~ '.gif') }}" alt="{{ new.lang }}" class="flag" />
+                {{ new.title }}
+            </a>
+            <span class="little">
+                <strong>{{ new.author.username }}</strong>
+                - {{ new.date.format('d m Y') }}
+            </span>
+            <span class="little">(<strong>{{ new.comments | length }}</strong> {{ "comments" | trans }})</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

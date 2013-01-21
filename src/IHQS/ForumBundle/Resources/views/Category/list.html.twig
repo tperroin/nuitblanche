@@ -1,0 +1,20 @@
+<ul class="forum_topics_list forum_categories_list">
+    {% for category in categories %}
+    <li>
+        <div class="content">
+            <a class="name" href="{{ forum_urlForCategory(category) }}">{{ category.name }}</a>
+        </div>
+        <p style="color:#888;">{{ category.description }}</p>
+        <div class="metas">
+            <span class="numTopics">{{ category.numTopics }} {{ category.numTopics > 1 ? 'topics'|trans : 'topic'|trans }}</span>
+        </div>
+        {% if category.lastPost %}
+        <div class="lasts">
+            {{ "last post" | trans }} : <a href="{{ forum_urlForTopic(category.lastPost.topic) }}">{{ category.lastPost.topic.subject }}</a><br />
+            {{ "by" | trans }} <strong><span class="author">{{ category.lastPost.authorName }}</span></strong><br />
+            <span class="createdAt">{{ category.lastPost.createdAt|date }}</span>
+        </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>

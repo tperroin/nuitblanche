@@ -1,0 +1,15 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ title | trans }}{% endblock %}
+{% block content %}
+        {% if message is not empty %}<div class="flash">{{ message | trans }}</div>{% endif %}
+        <form id="admin-form" method="post" action="" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+            <div>
+                {% spaceless %}
+                <label for="submit"></label>
+                <input name="submit" class="submit" type="submit" value="{{ "Submit" | trans }}" />
+                {% endspaceless %}
+            </div>
+        </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "IHQSTournamentBundle::layout.html.twig" %}
+
+{% block content %}
+<h2>{{ tournament.name }}</h2>
+
+<div class="message {% if error %}error{% endif %}">
+    {% if error %}
+        {{ "An error occurend while launching the tournament" | trans }}
+    {% else %}
+        {{ "Tournament has been launched. Good Luck & Have Fun !" | trans }}
+    {% endif %}
+</div>
+
+{% endblock %}

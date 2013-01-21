@@ -1,0 +1,115 @@
+body
+{
+    font-family: Arial, Helvetica;
+    font-size: 12px;
+    height: 100%;
+}
+
+.spacer
+{
+    clear: both;
+}
+
+a, strong
+{
+    color: #395674;
+    text-decoration: none;
+}
+strong
+{
+    font-weight: bold;
+}
+a.disabled
+{
+    font-weight: normal;
+}
+a:hover
+{
+    color: #294769;
+    text-shadow: 0 0 5px #888;
+    -moz-text-shadow: 0 0 5px #888;
+    -webkit-text-shadow: 0 0 10px #888;
+}
+a.no-color
+{
+    color: white;
+}
+
+h1,
+fieldset legend
+{
+    font-family: Georgia;
+    font-weight: bold;
+    color: #395674;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+h2
+{
+    margin-top: 15px;
+}
+
+h2,h3
+{
+    font-family: Georgia;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+img.flag
+{
+    margin-left : 3px;
+    margin-right: 3px;
+}
+
+.win
+{
+    color: green;
+}
+.loss
+{
+    color: red;
+}
+.little
+{
+    font-size: 9px;
+}
+
+hr
+{
+    background-color: #EEE;
+    height: 1px;
+    margin-bottom: 1px;
+}
+
+.block
+{
+    float: left;
+    min-height: 100px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.block-last { margin-right: 0px; }
+.block-1 { width: 150px; }
+.block-2 { width: 158px; }
+.block-2-mid { width: 157px; }
+.block-3 { width: 335px; }
+.block-4 { width: 520px; }
+
+pre
+{
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background: #EEE;
+    font-family: 'Courier New', monospace;
+}
+
+ol.comments div.main p
+{
+    margin-bottom: 5px;
+}

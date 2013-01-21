@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="" />
+        <title>Nuit Blanche's Tournament Bundle | by Nuit Blanche, Fair Gamers since 1996</title>
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/ihqsnuitblanche/css/styles.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('bundles/ihqstournament/css/styles.css') }}" type="text/css" media="all" />
+        <link href='http://fonts.googleapis.com/css?family=Give+You+Glory&v2' rel='stylesheet' type='text/css'>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+  	<div id="page">
+            <a name="top"></a>
+            <div id="header">
+                <h1><span>Nuit Blanche's Tournament Bundle - {{ block('title') }}</span></h1>
+                <span class="baseline">fair gamers since 1996.</span>
+                <ul class="lang">
+                    <li><a href="{{ url('lang', {'lang': 'fr_FR'}) }}" class="fr"><span>fr</span></a></li>
+                    <li><a href="{{ url('lang', {'lang': 'en_US'}) }}" class="en"><span>en</span></a></li>
+                </ul>
+
+                {% if is_granted('ROLE_USER') %}
+                    {% render "IHQSNuitBlancheBundle:Secured:_hello" %}
+                {% else %}
+                    {% render "IHQSNuitBlancheBundle:Secured:_login" %}
+                {% endif %}
+
+                {% include "IHQSTournamentBundle:Tournament:_menu.html.twig" with {'tournament': tournament} %}
+
+                <div style="clear: both"></div>
+            </div>
+
+            {% block content %}
+            {% endblock %}
+    </body>
+</html>

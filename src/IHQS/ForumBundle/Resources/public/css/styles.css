@@ -1,0 +1,121 @@
+/**
+ * Feed
+ */
+.forum h2 {
+     display: inline-block;
+     margin: 10px 0;
+}
+ a.feed {
+     float: right;
+     margin: 10px 0;
+}
+
+/**
+ * Pagination
+ */
+div.pagination {
+    height: 30px;
+    line-height: 30px;
+}
+    div.pagination ul  {
+        display: inline-block;
+        width: 320px;
+        height: 30px;
+        text-align: center;
+    }
+        div.pagination ul li {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+        }
+    div.pagination span {
+        color: #CCC;
+    }
+    div.pagination p {
+        display: inline-block;
+        height: 30px;
+    }
+    div.pagination p.previous {
+        float: left;
+        text-align: left;
+        width: 100px;
+    }
+    div.pagination p.next {
+        float: right;
+        text-align: right;
+        width: 100px;
+    }
+
+/**
+ * Topic lists
+ */
+ul.forum_topics_list {
+
+}
+    ul.forum_topics_list img {
+        height: 40px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    ul.forum_topics_list li {
+        height: 40px;
+        border-top: 1px solid #EEE;
+        border-bottom: 1px solid #EEE;
+        padding: 10px;
+        background: white;
+        margin: 10px 0;
+    }
+        ul.forum_topics_list li div.content {
+            font-size: 14px;
+            font-weight: bold;
+            height: 16px;
+            max-width: 350px;
+            overflow: hidden;
+        }
+        ul.forum_topics_list li div.lasts {
+            float: right;
+            color: #888;
+            position:relative;
+            top:-30px;
+            text-align: right;
+        }
+    ul.forum_topics_list li.last {
+        border-bottom: none;
+    }
+ul.forum_categories_list li div.lasts {
+   top: -43px;
+}
+
+/**
+ * Forms
+ */
+.forum button,
+.forum div.cancel a {
+    font-weight: bold;
+    width: 148px;
+    height: 30px;
+    font-size: 12px;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.forum button {
+    background: #395674;
+    color: white;
+    height: 32px;
+    border: 1px solid black;
+
+}
+
+.forum div.cancel a {
+    margin-left: 10px;
+    background: white;
+    color: #395674;
+    border: 1px solid #395674;
+}
+

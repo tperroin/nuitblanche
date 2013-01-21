@@ -1,0 +1,64 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ team.name }} {{ "player list" | trans }}{% endblock %}
+
+{% block content %}
+    {% include "IHQSNuitBlancheBundle:Team:_header.html.twig" with {'teams' : teams } %}
+
+    <div class="sub-section wars">
+        <h2>{{ "Player list" | trans }}</h2>
+        <table class="team-player-list sortable">
+            <caption>{{ team.name }} {{ "player list" | trans }}</caption>
+
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>{{ "name" | trans }}</th>
+                    <th>{{ "sc2" | trans }}</th>
+                    <th>{{ "wow" | trans }}</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>{{ players | length }} {{ "players" | trans }}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+
+            <tbody>
+                {% for user in players %}
+                <tr class="last">
+                    <td>
+                        <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ user.countryCode | lower  ~ '.gif') }}" alt="{{ user.countryCode }}" class="flag" />
+                    </td>
+                    <td>
+                        <a href="{{ url('player_show', { "user_id": user.id }) }}">{{ user.username }}</a>
+                    </td>
+                    <td>
+                        {% if user.sc2 %}
+                        <a href="{{ url('player_show_profile', { "user_id": user.id, "profile": 'sc2' }) }}">
+                            <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/sc2.gif') }}" class="flag" /> {{ "profile" | trans }}
+                        </a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user.wow %}
+                        <a href="{{ url('player_show_profile', { "user_id": user.id, "profile": 'wow' }) }}">
+                            <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/wow.gif') }}" class="flag" /> {{ "profile" | trans }}
+                        </a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

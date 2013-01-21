@@ -1,0 +1,21 @@
+{% extends 'ForumBundle::layout.html.twig' %}
+
+{% block title %}{{ "Topics list" | trans }}{% endblock %}
+
+{% block content %}
+<div class="forum category_show">
+    <ul class="crumbs filters">
+        <li class="first"><a href="{{ path('forum_index') }}">{{ "Forum" | trans }}</a></li>
+        <li class="last">{{ category.name }}</li>
+    </ul>
+    <div class="main topics">
+        <h2>{{ category.name }}</h2>
+        {% render 'ForumBundle:Topic:list' with {'category': category, "pagerOptions": { 'page': page }} %}
+        <div class="pagerfanta">{{ pagerfanta(category.getTopics(page), 'ihqsforum') }}</div>
+    </div>
+
+    <div class="register">
+        <a href="{{ path('forum_category_topic_new', {'slug': category.slug} ) }}">{{ "Create a new topic" | trans }}</a>
+    </div>
+</div>
+{% endblock %}

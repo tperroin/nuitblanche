@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="nuit blanche, starcraft 2, multigaming, female gaming" />
+        <title>Nuit Blanche, Fair Gamers since 1996 | {% block title %}{% endblock %}</title>
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/ihqsnuitblanche/css/styles.css') }}" type="text/css" media="all" />
+        <link href='http://fonts.googleapis.com/css?family=Give+You+Glory&v2' rel='stylesheet' type='text/css'>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('bundles/ihqswysiwyg/js/wysiwyg.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/ihqsnuitblanche/js/nb.js') }}"></script>
+        {% block stylesheets %}{% endblock %}
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-23673822-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+    </head>
+    <body>
+  	<div id="page">
+            <a name="top"></a>
+            <div id="header">
+                <h1><span>Nuit Blanche - {{ block('title') }}</span></h1>
+                <span class="baseline">fair gamers since 1996.</span>
+                <ul class="lang">
+                    <li><a href="{{ url('lang', {'lang': 'fr_FR'}) }}" class="fr"><span>fr</span></a></li>
+                    <li><a href="{{ url('lang', {'lang': 'en_US'}) }}" class="en"><span>en</span></a></li>
+                </ul>
+
+               
+                    {% render "IHQSNuitBlancheBundle:Secured:_login" %}
+                
+
+                <ul class="menu">
+                    <li class="first">
+                        <a href="{{ url('homepage') }}">{{ "Home" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('news_archives') }}">{{ "News" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('team_list') }}">{{ "Team" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('war_list') }}">{{ "Matchs" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('league_list') }}">{{ "Leagues" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('replay_list') }}">{{ "Replays" | trans }}</a>
+                    </li>
+                    <li class="stream-{% render "IHQSNuitBlancheBundle:Stream:_status" %}">
+                        <a href="{{ url('stream_live') }}" class="disabled">Web TV</a>
+                    </li>
+                    <li class="last">
+                        <a href="#">{{ "Forum" | trans }}</a>
+                    </li>
+                </ul>
+
+                <div style="clear: both"></div>
+            </div>
+
+            {% block main %}
+            {% endblock %}
+
+            <div id="footer">
+                <ul>
+                    <li class="footer-item-category">
+                        <p>{{ "Credits" | trans }}</p>
+                        <ul>
+                            <li>developped by <a href="http://www.ihqs.net" target="_blank">ihqs</a></li>
+                            <li>see source code at <a href="http://github.com/AlepH-FR/nuitblanche" target="_blank">github</a></li>
+                            <li>powered by Symfony 2</li>
+                            <li>using  <a href="http://github.com/AlepH-FR/SC2Chart" target="_blank">SC2Chart</a> & SC2Replay</li>
+                            <li>using  <a href="http://github.com/AlepH-FR/SC2Ranks" target="_blank">SC2Ranks</a></li>
+                        </ul>
+                    </li>
+                    <li class="footer-item-category">
+                        <p>{{ "Partners" | trans }}</p>
+                        <ul>
+                            <li>(<a target="_blank" href="http://www.ihqs.net">go</a>) ihqs</li>
+                        </ul>
+                    </li>
+                    <li class="footer-item-category">
+                        <p>{{ "Useful links" | trans }}</p>
+                        <ul>
+                            <li>(<a target="_blank" href="http://www.pandaria-wars.com">go</a>) pandaria</li>
+                            <li>(<a target="_blank" href="http://www.sc2cl.com">go</a>) sc2cl</li>
+                            <li>(<a target="_blank" href="http://www.esl.eu">go</a>) esl</li>
+                            <li>(<a target="_blank" href="http://www.sc2ranks.com">go</a>) sc2ranks</li>
+                        </ul>
+                    </li>
+                    <li class="footer-item-category">
+                        <p>{{ "Misc." | trans }}</p>
+                        <ul>
+                            <li><a href="{{ url('to_come') }}">{{ "to come" | trans }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                CKEDITOR.plugins.addExternal( 'nuitblanche', '/bundles/ihqsnuitblanche/js/ckeditor/plugins/nuitblanche/' );
+            });
+            ihqs.wysiwyg.setSettings({
+                extraPlugins : 'nuitblanche',
+                toolbar : [
+                    ['Format', 'Bold', 'Italic', 'Strike', 'RemoveFormat', '-', 'Flash', 'Image', 'Link', '-', 'AddPlayer', 'AddClanWar', 'AddRaceImage', '-', 'Clean', 'Preview']
+                ]
+            });
+        </script>
+        {% render "IHQSWysiwygBundle:Script:init" %}
+	<script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script>
+    </body>
+</html>

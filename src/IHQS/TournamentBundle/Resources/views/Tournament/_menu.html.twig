@@ -1,0 +1,17 @@
+<ul class="menu">
+    {% if tournament %}
+        <li class="first">
+            <a href="{{ url('ihqs_tournament_tournament_show', {'tournament_id': tournament.id}) }}">{{ "Tournament's home" | trans }}</a>
+        </li>
+        {% for round in tournament.rounds %}
+        <li>
+            <a href="{{ url('ihqs_tournament_round_show', {'tournament_id': tournament.id, 'round_id': round.id}) }}">
+                {{ "Round" | trans }} {{ loop.index }} - {{ round.type | trans }}
+            </a>
+        </li>
+        {% endfor %}
+    {% endif %}
+    <li class="{% if not tournament %}first {% endif %}last">
+        <a href="{{ url('ihqs_tournament_tournament_new') }}">{{ "Create a new tournament" | trans }}</a>
+    </li>
+</ul>

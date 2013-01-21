@@ -1,0 +1,8 @@
+{% if player %}
+<a href="{{ url('player_show', { 'user_id': player.user.id }) }}">
+    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.sc2Race ~ '_icon.png') }}" alt="{{ player.sc2Race }}" />
+    <strong>{{ player.username }}</strong>
+</a>
+{% else %}
+    {{ playerName }}
+{% endif %}

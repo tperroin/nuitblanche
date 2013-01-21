@@ -1,0 +1,39 @@
+main:
+    resource: "@IHQSNuitBlancheBundle/Controller/MainController.php"
+    type:     annotation
+
+league:
+    resource: "@IHQSNuitBlancheBundle/Controller/LeagueController.php"
+    type:     annotation
+
+news:
+    resource: "@IHQSNuitBlancheBundle/Controller/NewsController.php"
+    type:     annotation
+
+player:
+    resource: "@IHQSNuitBlancheBundle/Controller/PlayerController.php"
+    type:     annotation
+
+replay:
+    resource: "@IHQSNuitBlancheBundle/Controller/ReplayController.php"
+    type:     annotation
+
+stream:
+    resource: "@IHQSNuitBlancheBundle/Controller/StreamController.php"
+    type:     annotation
+
+ts3:
+    resource: "@IHQSNuitBlancheBundle/Controller/Ts3Controller.php"
+    type:     annotation
+
+team:
+    resource: "@IHQSNuitBlancheBundle/Controller/TeamController.php"
+    type:     annotation
+
+war:
+    resource: "@IHQSNuitBlancheBundle/Controller/WarController.php"
+    type:     annotation
+
+secured:
+    resource: "@IHQSNuitBlancheBundle/Controller/SecuredController.php"
+    type:     annotation

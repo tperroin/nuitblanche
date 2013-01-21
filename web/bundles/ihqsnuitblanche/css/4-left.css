@@ -1,0 +1,112 @@
+div#left {
+    background: none;
+    -moz-box-shadow: none;
+}
+
+ul.teams li a {
+    width: 100px;
+    display: inline-block;
+}
+
+div.calendar-title {
+    margin-bottom: 10px;
+}
+
+div.calendar-title h3 {
+    margin-bottom: 0;
+}
+
+ul.calendar {
+    margin-left: -2px;
+    margin-bottom: 20px;
+}
+
+ul.calendar li.date {
+    float: left;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #CCC;
+    border-radius: 7px;
+    -o-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    
+    margin: 2px;
+    background: white;
+    padding: 2px;
+
+    transition: width 1s,height 1s;
+    -o-transition: width 1s,height 1s;
+    -moz-transition: width 1s,height 1s;
+    -webkit-transition: width 1s,height 1s;
+}
+
+ul.calendar li.eol:hover {
+    float: right;
+    position: relative;
+    left: 0;
+    margin-bottom: -36px;
+    top: -38px;
+}
+
+ul.calendar li.date ul.events {
+    display:none;
+}
+
+ul.calendar li.date ul.events li {
+    font-size: 10px;
+    width: 58px;
+    overflow: hidden;
+    background: white;
+    opacity: 0.8;
+    -o-opacity: 0.8;
+    -moz-opacity: 0.8;
+    -webkit-opacity: 0.8;
+}
+
+ul.calendar li.date:hover {
+    width: 66px;
+    height: 66px;
+    
+    transition: width 1s,height 1s;
+    -o-transition: width 1s,height 1s;
+    -moz-transition: width 1s,height 1s;
+    -webkit-transition: width 1s,height 1s;
+}
+
+ul.calendar li.date:hover ul.events {
+    display: block;
+}
+
+ul.calendar li.date:hover,
+ul.calendar li.current {
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+}
+
+ul.calendar li.date.current {
+    border-color: #395674;
+}
+
+ul.calendar li.date .number {
+    font-size: 10px;
+}
+
+ul.calendar li.war {
+    background-image: url('../images/logo_league.jpg');
+    background-position: 169px -4px;
+    cursor: pointer;
+}
+
+div#left div.online-users span.team {
+    width: 130px;
+}
+
+div.ts3-channels ul ul {
+    padding-left: 10px;
+}
+
+div.ts3-channels ul.ts3-users {
+    margin-bottom: 5px;
+}

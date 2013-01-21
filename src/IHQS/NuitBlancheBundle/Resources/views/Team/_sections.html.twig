@@ -1,0 +1,16 @@
+<div class="widget">
+    <h3>{{ "Section list" | trans }}</h3>
+    <ul class="teams">
+        {% for team in teams %}
+        <li class="main up">
+            <span>
+                <img class="flag" src="{{ team.icon }}" />
+                <a href="{{ url('team_show', { "team_id": team.id }) }}">{{ team.name }}</a>
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="bottom-link">
+        <a href="{{ url('player_list') }}">{{ "Website's user list"  | trans }}</a>
+    </div>
+</div>

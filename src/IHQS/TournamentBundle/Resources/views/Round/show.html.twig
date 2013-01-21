@@ -1,0 +1,12 @@
+{% extends "IHQSTournamentBundle::layout.html.twig" %}
+
+{% block content %}
+<h2>{{ tournament.name }} > {{ "Round" | trans }} #{{ round.order }} - {{ round.type | trans }}</h2>
+
+{% if round.groups | length == 0 %}
+    {{ "This tournament has not been launched yet" | trans }}
+{% else %}
+    {% include "IHQSTournamentBundle:Round:_" ~ round.type ~ ".html.twig" with { 'round': round } %}
+{% endif %}
+
+{% endblock %}

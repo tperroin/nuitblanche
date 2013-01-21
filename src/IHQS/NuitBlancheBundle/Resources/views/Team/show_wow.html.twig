@@ -1,0 +1,44 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ team.name }} {{ "player list" | trans }}{% endblock %}
+
+{% block content %}
+    {% include "IHQSNuitBlancheBundle:Team:_header.html.twig" with {'teams' : teams } %}
+
+    <div class="sub-section wars">
+        <h2>{{ "Player list" | trans }}</h2>
+        <table class="team-player-list sortable">
+            <caption>{{ team.name }} {{ "player list" | trans }}</caption>
+
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>{{ "name" | trans }}</th>
+                    <th>{{ "character" | trans }}</th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>{{ players | length }} {{ "players" | trans }}</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+
+            <tbody>
+                {% for user in players %}
+                <tr class="last">
+                    <td><img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ user.countryCode | lower  ~ '.gif') }}" alt="{{ user.countryCode }}" class="flag" /></td>
+                    <td><a href="{{ url('player_show', { "user_id": user.id }) }}">{{ user.username }}</a></td>
+                    <td style="text-align:left;"><img src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.wow.class | lower  ~ '.png') }}" alt="{{  user.wow.class | lower }}" class="flag" />
+                        <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.wow.race | lower  ~ '_' ~ user.wow.sex ~ '.gif') }}" alt="{{  user.wow.race | lower }}" class="flag" />
+                        {{ user.wow.name }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

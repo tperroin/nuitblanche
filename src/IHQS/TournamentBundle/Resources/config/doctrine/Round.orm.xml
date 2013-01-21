@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="IHQS\TournamentBundle\Entity\Round" table="tournament_round" repository-class="IHQS\TournamentBundle\Entity\RoundRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="type" column="type" type="string" />
+
+        <field name="playerLimit" column="player_limit" type="integer" />
+
+        <field name="infos" column="infos" type="text" nullable="true" />
+
+        <field name="order" column="round_order" type="integer" />
+
+        <one-to-many mapped-by="round" target-entity="RoundGroup" field="groups" />
+
+        <many-to-one target-entity="Tournament" field="tournament" inversed-by="rounds">
+            <join-column name="tournament_id" referenced-column-name="id" />
+        </many-to-one>
+
+    </entity>
+
+</doctrine-mapping>

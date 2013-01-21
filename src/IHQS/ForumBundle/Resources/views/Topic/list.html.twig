@@ -1,0 +1,22 @@
+<ul class="forum_topics_list">
+{% for topic in topics %}
+    <li class="topic">
+        {% set type = topic.postIt ? 'post-it' : 'topic' %}
+        <img src="{{ asset('bundles/ihqsforum/images/ico/' ~ type ~ '.png') }}">
+        <div class="content">
+            <a class="subject" href="{{ forum_urlForTopic(topic) }}">{{ topic.subject }}</a>
+        </div>
+        <div class="metas">
+            <span class="createdAt">{{ topic.createdAt|date }}</span> 
+            - {{ "by" | trans }} <strong><span class="author">{{ topic.authorName }}</span></strong>
+            - <span class="numPosts">{{ topic.numPosts - 1 }} {{ topic.numPosts > 2 ? 'replies'|trans : 'reply'|trans }}</span>
+            - <a class="category" href="{{ forum_urlForCategory(topic.category) }}">{{ topic.category.name }}</a>
+        </div>
+        <div class="lasts">
+            {{ "last post" | trans }}<br />
+            {{ "by" | trans }} <strong><span class="author">{{ topic.lastPost.authorName }}</span></strong><br />
+            <span class="createdAt">{{ topic.lastPost.createdAt|date }}</span>
+        </div>
+    </li>
+{% endfor %}
+</ul>

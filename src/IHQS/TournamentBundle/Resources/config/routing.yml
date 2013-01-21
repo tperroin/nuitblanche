@@ -1,0 +1,11 @@
+ihqs_tournament_tournament:
+    resource: "@IHQSTournamentBundle/Controller/TournamentController.php"
+    type:     annotation
+
+ihqs_tournament_round:
+    resource: "@IHQSTournamentBundle/Controller/RoundController.php"
+    type:     annotation
+
+ihqs_tournament_match:
+    resource: "@IHQSTournamentBundle/Controller/MatchController.php"
+    type:     annotation

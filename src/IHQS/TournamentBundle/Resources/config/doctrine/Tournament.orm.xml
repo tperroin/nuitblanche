@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="IHQS\TournamentBundle\Entity\Tournament" table="tournament_tournament" repository-class="IHQS\TournamentBundle\Entity\TournamentRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="date" column="date" type="datetime" />
+
+        <field name="name" column="name" type="string" />
+
+        <field name="description" column="description" type="text" nullable="true" />
+
+        <field name="rules" column="rules" type="text" nullable="true" />
+
+        <field name="subscriptionsClosed" column="subscriptions_closed" type="boolean" nullable="true" />
+
+        <field name="hasSeeds" column="has_seeds" type="boolean" nullable="true" />
+        
+        <one-to-many target-entity="Round" field="rounds" mapped-by="tournament" />
+
+<!-- This fields are mapped in the EventSubscriber\MetadataloadedSubscriber class
+
+        <many-to-one target-entity="%ihqs_tournament.model.user.class%" field="admin">
+            <join-column name="admin_id" referenced-column-name="id" />
+        </many-to-one>
+
+        <many-to-many target-entity="%ihqs_tournament.model.user.class%" field="subscribers">
+            <join-table name="tournament_tournament_subscribers">
+                <join-columns>
+                    <join-column name="subscriber" referenced-column-name="subscriber_id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="tournament" rereferenced-column-name="tournament_id" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+-->
+
+    </entity>
+
+</doctrine-mapping>

@@ -1,0 +1,22 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}Oops !{% endblock %}
+
+{% block content %}
+    <p>{{ "The page you are asking does not exists" | trans }}</p>
+    <br />
+    <ul class="actions">
+        <li>
+            <a href="javascript:history.back();">
+                <img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/ico/goto.png') }}" alt=" {{ "Back to previous page" | trans }}" />
+                {{ "Back to previous page" | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('homepage') }}">
+                <img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/ico/goto.png') }}" alt=" {{ "Go to homepage" | trans }}">
+                {{ "Go to homepage" | trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

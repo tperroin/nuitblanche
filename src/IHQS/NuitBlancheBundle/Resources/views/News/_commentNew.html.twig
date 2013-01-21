@@ -1,0 +1,25 @@
+<div id="comment-form">
+    {% if not_connected %}
+    <p class="login">
+        {{ "Please" | trans }}
+        <strong>{{ "log in" | trans }} </strong>
+        {{ "or" | trans }}
+        <a href="{{ url('_secured_register') }}">{{ "register" | trans }}</a>
+        {{ "in order to post comments" | trans }}
+    </p>
+    {% else %}
+    <form method="post" action="{{ submit_path }}">
+        <fieldset>
+            <legend>{{ title | trans }}</legend>
+            {{ form_widget(form) }}
+        </fieldset>
+
+        <fieldset id="submit_fieldset">
+            <legend>{{ "Submission" | trans }}</legend>
+            <p>
+                <input type="submit" name="_comment_submit" value="{{ "Submit" | trans }}" />
+            </p>
+        </fieldset>
+    </form>
+    {% endif %}
+</div>

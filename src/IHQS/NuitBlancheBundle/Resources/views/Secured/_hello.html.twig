@@ -1,0 +1,45 @@
+<div class="block-login">
+    <div class="log">
+        <img class="avatar" src="{{ user.avatarUrl }}" />
+        <div class="userdata">
+            {{ "Logged as" | trans }}<br />
+            <span class="username">{{ user.username }}</span>
+        </div>
+        <div class="spacer"></div>
+        <ul class="user-menu">
+            <li class="first">{{ "user menu" | trans }}</li>
+            <li>
+                <a href="{{ url('_secured_profile_edition') }}">
+                    {{ "Edit my profile" | trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('_secured_profile_password') }}">
+                    {{ "Change password" | trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('contribute_replay_new') }}">
+                    {{ "Add a replay" | trans }}
+                </a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li>
+                <a href="{{ url('contribute_news_new') }}">
+                    {{ "Add a news" | trans }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('contribute_war_new') }}">
+                    {{ "Add a clan war" | trans }}
+                </a>
+            </li>
+            {% endif %}
+            <li class="last">
+                <a href="{{ path("_security_logout") }}">
+                    {{ "Log out" | trans }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

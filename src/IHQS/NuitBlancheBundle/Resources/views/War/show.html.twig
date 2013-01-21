@@ -1,0 +1,81 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}
+        {{ "Clan War" | trans }}
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="admin_actions">
+            <a class="edit" href="{{ url('contribute_war_edit', {'war_id': war.id}) }}">({{ "edit" | trans }})</a>
+            </div>
+        {% endif %}
+{% endblock %}
+
+{% block content %}
+    <ul class="filters">
+        <li class="first">
+            <a href="#info">{{ "Info" | trans }}</a>
+        </li>
+        <li>
+            <a href="#stats">{{ "Games" | trans }}</a>
+        </li>
+        <li class="last">
+            <a href="#social">{{ "Replays" | trans }}</a>
+        </li>
+    </ul>
+
+    <a name="info"></a>
+    <div class="replay-info war-info">
+        <div class="teams">
+            <div class="team1"><strong>{{ war.team.tag }}</strong></div>
+            <div class="score {{ war.result }}">{{ war.teamScore }}</div>
+            <div class="score {{ war.opponentResult }}">{{ war.opponentScore }}</div>
+            <div class="team2"><strong>{{ war.opponentName }}</strong></div>
+            <div class="spacer"></div>
+        </div>
+        <div class="spacer"></div>
+        <br />
+        <hr />
+        <div class="game-info">
+            <h3>{{ "War information" | trans }}</h3>
+            <ul class="info">
+                <li>
+                    <span class="stat">{{ "league" | trans }}</span>
+                    <span class="data"><a href="{{ url('league_show', { 'league_id': war.season.league.id }) }}">{{ war.season.league.name }}</a></span>
+                </li>
+                <li>
+                    <span class="stat">{{ "season" | trans }}</span>
+                    <span class="data"><a href="">{{ war.season.number }}</a></span>
+                </li>
+            </ul>
+            <ul class="info">
+                <li>
+                    <span class="stat">{{ "date" | trans }}</span>
+                    <span class="data">{{ war.date.format('d m Y') }}</span>
+                </li>
+                <li>
+                    <span class="stat">{{ "maps" | trans }}</span>
+                    <span class="data">{{ war.maps }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <a name="games"></a>
+    <h2>{{ "Games" | trans }}</h2>
+    {% render "IHQSNuitBlancheBundle:War:_games" with { "war_id" : war.id } %}
+
+    <a name="replays"></a>
+
+    <h2>{{ "Replays" | trans }}</h2>
+    <div class="sub-section wars replays">
+        <table>
+            <caption>{{ "Replays" | trans }}</caption>
+            <thead></thead>
+            <tfoot></tfoot>
+            <tbody>
+                {% for replay in war.replays %}
+                {% include "IHQSNuitBlancheBundle:Replay:_row.html.twig" with { "replay" : replay } %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

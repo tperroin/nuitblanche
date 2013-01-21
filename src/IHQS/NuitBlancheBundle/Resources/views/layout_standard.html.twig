@@ -1,0 +1,35 @@
+{% extends 'IHQSNuitBlancheBundle::layout_base.html.twig' %}
+
+
+{% block main %}
+
+    <div id="left">
+        {% block left %}
+            {% render "IHQSForumBundle:Topic:_latest" %}
+            {% render "IHQSNuitBlancheBundle:Replay:_latest" %}
+            {% render "IHQSNuitBlancheBundle:News:_latest" %}
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% if app.session.flash('notice') %}
+            <div class="flash-message">
+                <em>Notice</em>: {{ app.session.flash('notice') }}
+            </div>
+        {% endif %}
+
+        <h1>{{ block ('title') }}</h1>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div id="right">
+        {% block right %}
+            {% include "IHQSNuitBlancheBundle:Secured:_action.html.twig" %}
+            {% render "IHQSNuitBlancheBundle:Team:_sections" %}
+            {% render "IHQSNuitBlancheBundle:War:_latest" %}
+            {% include "IHQSNuitBlancheBundle:Main:_partners.html.twig" %}
+        {% endblock %}
+    </div>
+
+{% endblock %}

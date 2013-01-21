@@ -1,0 +1,3 @@
+ihqs_forum_post:
+    resource: "@IHQSForumBundle/Controller/PostController.php"
+    type:     annotation

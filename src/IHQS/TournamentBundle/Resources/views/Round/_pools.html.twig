@@ -1,0 +1,53 @@
+{% for group in round.groups %}
+<div class="group">
+
+    <h3>{{ group.name }}</h3>
+
+    <table class="pool">
+
+        <caption>{{ "Standings" | trans }}</caption>
+
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{{ "player" | trans }}</th>
+                <th>{{ "wins" | trans }}</th>
+                <th>{{ "losses" | trans }}</th>
+                <th>{{ "ratio" | trans }}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for player in group.rankedPlayers %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{% include "IHQSTournamentBundle:Player:_display.html.twig" with {'player' : player } %}</td>
+                <td>{{ group.getWins(player) }}</td>
+                <td>{{ group.getLosses(player) }}</td>
+                <td>{{ group.getRatio(player) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="matches">
+
+        <caption>{{ "Matches" | trans }}</caption>
+
+        <tbody>
+            {% for match in group.matches %}
+            <tr>
+                <td>{{ match.order }}</td>
+                <td>{% include "IHQSTournamentBundle:Player:_display.html.twig" with {'player' : match.player1 } %}</td>
+                <td>{{ match.player1Score }}</td>
+                <td>{{ match.player2Score }}</td>
+                <td>{% include "IHQSTournamentBundle:Player:_display.html.twig" with {'player' : match.player2 } %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endfor %}

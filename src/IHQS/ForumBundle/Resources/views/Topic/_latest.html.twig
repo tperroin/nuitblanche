@@ -1,0 +1,14 @@
+<div class="widget last-news">
+    <h3>{{ "Forum's latest" | trans }}</h3>
+    <ul>
+        {% for topic in topics %}
+        <li>
+            <a href="{{ forum_urlForTopic(topic) }}">{{ topic.subject }}</a>
+            <span class="little">{{ topic.authorName }} - {{ topic.numPosts - 1 }} {{ topic.numPosts > 2 ? 'replies' : 'reply' }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="bottom-link">
+        <a href="{{ url('forum_index') }}">{{ "Forum" | trans }}</a>
+    </div>
+</div>

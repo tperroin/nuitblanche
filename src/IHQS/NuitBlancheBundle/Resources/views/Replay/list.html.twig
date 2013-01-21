@@ -1,0 +1,33 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "Replays" | trans }}{% endblock %}
+
+{% block content %}
+    <ul class="filters">
+        <li class="first last">
+            <a href="{{ url('contribute_replay_new') }}">{{ "Add a replay" }}</a>
+        </li>
+    </ul>
+    <div class="sub-section replays">
+        <table class="team-player-list">
+            <caption>{{ "Replays" | trans }}</caption>
+            <thead>
+                <tr>
+                    <th>{{ "map" | trans }}</th>
+                    <th colspan="3">{{ "players" | trans }}</th>
+                    <th>{{ "date" | trans }}</th>
+                    <th>{{ "dls" | trans }}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot></tfoot>
+            <tbody>
+                {% for replay in replays %}
+                {% include "IHQSNuitBlancheBundle:Replay:_row.html.twig" with { "replay" : replay } %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+{% endblock %}

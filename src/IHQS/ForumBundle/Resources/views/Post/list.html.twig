@@ -1,0 +1,37 @@
+<ol class="forum_posts_list comments">
+    {% for post in posts %}
+    <li>
+        <a name="{{ post.number }}"></a>
+        {% if post.author %}
+        <a class="avatar" href="{{ url('player_show', {'user_id': post.author.id}) }}">
+            <img src="{{ post.author.avatarUrl }}" />
+        </a>
+        {% endif %}
+        <p class="meta" style="float: left;">
+            #{{ loop.index }}
+            - {% if post.author %}<a href="{{ url('player_show', {'user_id': post.author.id}) }}">{{ post.author.username }}</a>{% else %}Anonymous{% endif %}
+            - {{ post.createdAt.format('d/m/Y - H:i') }}
+        </p>
+        <ul class="actions">
+            <li>&nbsp;</li>
+            {% if post.isAuthor(connected_user()) %}
+            <li class="edit">
+                <a href="{{ url('forum_post_edit', { "id": post.id }) }}" >
+                    <span>edit</span>
+                </a>
+            </li>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="delete">
+                <a href="{{ url('forum_post_delete', { "id": post.id }) }}" onclick="return confirm('{{ "Are you sure to delete this post ?" | trans }}');">
+                    <span>delete</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="main" style="clear: right;">
+            {{ post.message | raw }}
+        </div>
+    </li>
+    {% endfor %}
+</ol>

@@ -1,0 +1,28 @@
+<div class="block-login">
+    {% if error %}
+        <div class="error">{{ error.message }}</div>
+    {% endif %}
+
+    <form action="{{ path("_security_check") }}" method="post" id="login">
+        <input type="hidden" id="remember_me" name="_remember_me" value="on" />
+
+        <fieldset id="log" >
+             <legend>Login</legend>
+
+             <p class="para_standard" id="para_login" >
+                <label>{{ "Login" | trans }} </label>
+                <input type="text" id="username" name="_username" value="{{ last_username | default("login") }}" />
+            </p>
+
+            <p class="para_standard" id="para_password" >
+                <label>{{ "Password" | trans }} </label>
+                <input type="password" id="password" name="_password" value="password" />
+            </p>
+
+            <p class="para_standard" id="para_submit" >
+                <label>{{ "Connect" | trans }}</label>
+                <input type="submit" value="{{ "Connect" | trans }}" class="submit"  />
+            </p>
+        </fieldset>
+    </form>
+</div>

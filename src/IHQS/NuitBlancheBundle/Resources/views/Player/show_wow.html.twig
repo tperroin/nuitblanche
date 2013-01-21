@@ -1,0 +1,43 @@
+    <!--
+    <ul class="filters">
+        <li class="first last">
+            <a href="#info">{{ "Info" | trans }}</a>
+        </li>
+    </ul>
+    -->
+
+    <a name="info"></a>
+    <div class="player-item item-wide">
+        
+        <div class="avatar-canvas">
+            <style type="text/css">
+                div.player-item div.avatar-canvas img.avatar
+                {
+                    margin-left: -{{ user.avatarMargin }}px;
+                }
+            </style>
+            <img class="avatar" src="{{ user.avatarUrl }}" />
+        </div>
+        <h2><span>{{ user.wow.name }}</span></h2>
+        <ul class="short">
+            <li>
+                <span class="stat">{{ "name" | trans }}</span>
+                <span class="data">{{ user.firstName }} "<strong>{{ user.username }}</strong>" {{ user.lastName }}.</span>
+            </li>
+            <li>
+                <span class="stat">{{ "city" | trans }}</span>
+                <span class="data">
+                    {{ user.city }},
+                    <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ user.countryCode | lower  ~ '.gif') }}" alt="{{ user.countryCode }}" class="flag" />
+                    {{ user.country }}
+                </span>
+            </li>
+            <li>
+                <span class="stat">role</span>
+                <span class="data">{{ user.wow.role }}</span>
+            </li>
+        </ul>
+        <!--<img class="race" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.wow.race ~ '_fond.png') }}" />-->
+    </div>
+
+    <div class="spacer"></div>

@@ -1,0 +1,20 @@
+<div class="widget calendar-title">
+    <h3>{{ "Calendar" | trans }}</h3>
+</div>
+
+<ul class="calendar">
+    {% for key,date in dates %}
+    <li class="date
+        {% if key == "now" | date('d') %}current{% endif %}
+        {% if date.events | length >= 1 %}war{% endif %}
+        {% if loop.index is divisibleby(4) %}eol{% endif %}">
+        <span class="number">{{ key }}</span>
+        <ul class="events">
+            {% for event in date.events %}
+            <li>{{ event.time }} {{ event.name }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+    <div class="spacer"></div>
+</ul>

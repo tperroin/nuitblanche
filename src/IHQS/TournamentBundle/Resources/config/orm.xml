@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ihqs_tournament.model.match.class">IHQS\TournamentBundle\Entity\Match</parameter>
+        <parameter key="ihqs_tournament.model.round.class">IHQS\TournamentBundle\Entity\Round</parameter>
+        <parameter key="ihqs_tournament.model.round_group.class">IHQS\TournamentBundle\Entity\RoundGroup</parameter>
+        <parameter key="ihqs_tournament.model.tournament.class">IHQS\TournamentBundle\Entity\Tournament</parameter>
+
+        <parameter key="ihqs_tournament.manager.match.class">IHQS\TournamentBundle\Model\MatchRepository</parameter>
+        <parameter key="ihqs_tournament.manager.round.class">IHQS\TournamentBundle\Model\RoundRepository</parameter>
+        <parameter key="ihqs_tournament.manager.round_group.class">IHQS\TournamentBundle\Model\RoundGroupRepository</parameter>
+        <parameter key="ihqs_tournament.manager.tournament.class">IHQS\TournamentBundle\Model\TournamentRepository</parameter>
+    </parameters>
+
+    <services>
+        <!-- Document manager -->
+        <service id="ihqs_tournament.object_manager" alias="doctrine.orm.entity_manager" />
+        
+        <!-- Metadata loader -->
+        <service id="ihqs_tournament.subscriber.metadata" class="IHQS\TournamentBundle\EventSubscriber\MetadataLoadedSubscriber">
+            <tag name="doctrine.event_subscriber" connection="default" />
+            <argument type="string">%ihqs_tournament.model.user.class%</argument>
+        </service>
+
+        <!-- Repositories -->
+        <service
+            id      = "ihqs_tournament.manager.match"
+            class   = "%ihqs_tournament.manager.match.class%"
+            factory-method  = "getRepository"
+            factory-service = "ihqs_tournament.object_manager"
+        >
+            <argument type="string">%ihqs_tournament.model.match.class%</argument>
+        </service>
+
+        <service
+            id      = "ihqs_tournament.manager.round"
+            class   = "%ihqs_tournament.manager.round.class%"
+            factory-method  = "getRepository"
+            factory-service = "ihqs_tournament.object_manager"
+        >
+            <argument type="string">%ihqs_tournament.model.round.class%</argument>
+        </service>
+
+        <service
+            id      = "ihqs_tournament.manager.round_group"
+            class   = "%ihqs_tournament.manager.round_group.class%"
+            factory-method  = "getRepository"
+            factory-service = "ihqs_tournament.object_manager"
+        >
+            <argument type="string">%ihqs_tournament.model.round_group.class%</argument>
+        </service>
+
+        <service
+            id      = "ihqs_tournament.manager.tournament"
+            class   = "%ihqs_tournament.manager.tournament.class%"
+            factory-method  = "getRepository"
+            factory-service = "ihqs_tournament.object_manager"
+        >
+            <argument type="string">%ihqs_tournament.model.tournament.class%</argument>
+        </service>
+    </services>
+
+</container>

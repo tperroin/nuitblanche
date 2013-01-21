@@ -1,0 +1,102 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ season.league.name }} - {{ "Season" | trans }} {{ season.number }}{% endblock %}
+
+{% block content %}
+    <ul class="actions">
+        <li>
+            <a href="{{ url('league_show', { 'league_id' : season.league.id }) }}">
+                <img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/ico/goto.png') }}" alt="{{ "Back to the league" | trans }}">
+                {{ "Back to the league" | trans }}
+            </a>
+        </li>
+    </ul>
+    <br /><br />
+
+    <div class="notice notice-war">
+        <h2><a class="no-color" href="{url:season_item}"><span>{{ "Season" | trans }} {{ season.number }}</span></a></h2>
+        <ul>
+            {% if season.ended %}
+            <li>
+                <span class="league">{{ "end date" | trans }}</span>
+                <span class="opponent">{{ season.endDate.format('d/m/Y') }}</span>
+            </li>
+            {% else %}
+            <li>
+                <span class="league">{{ "Season" | trans }}</span>
+                <span class="opponent">#{{ season.number }}</span>
+            </li>
+            {% endif %}
+            <li>
+                <span class="league">{{ "division" | trans }}</span>
+                <span class="opponent">#{{ season.division }}</span>
+            </li>
+            <li>
+                <span class="league">{{ "stats" | trans }}</span>
+                <span class="opponent">
+                    <strong class="win">{{ season.wins }}</strong> -
+                    <strong class="draw">{{ season.draws }}</strong> -
+                    <strong class="loss">{{ season.losses }}</strong>
+                </span>
+            </li>
+
+            {% if season.ended %}
+            <li>
+                <span class="league">{{ "position" | trans }}</span>
+                <span class="opponent">#{{ season.position }}</span>
+            </li>
+            {% else %}
+            <li>
+                <span class="league">{{ "next war" | trans }}</span>
+                {% if season.nextWar %}
+                <span class="opponent">
+                     <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ season.nextWar.opponentCountry | lower  ~ '.gif') }}" alt="{{ season.nextWar.opponentCountry }}" class="flag" />
+                    {{ season.nextWar.opponentName }}
+                </span>
+                <span class="date">{{ season.nextWar.date.format('d m Y - H:i') }}</span>
+                {% else %}
+                -
+                {% endif %}
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <br /><br />
+    <h2>{{ "Played wars" | trans }}</h2>
+    <div class="sub-section wars">
+        <table>
+            <caption>{{ "Wars History" | trans }}</caption>
+            <thead></thead>
+            <tfoot></tfoot>
+            <tbody>
+                {% for war in season.wars %}
+                <tr>
+                    <td class="team">
+                        <a href="{{ url('season_show', { 'season_id': war.season.id }) }}">
+                            {{ war.season.league.name }} s.{{ war.season.number }}
+                        </a>
+                    </td>
+                    <td class="player player-left">
+                        <img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/flags/FR.gif') }}" />
+                        {{ war.team.tag }}
+                    </td>
+                    <td class="score match-{{ war.result }}">{{ war.teamScore}}</td>
+                    <td class="separator"></td>
+                    <td class="score match-{{ war.opponentResult }}">{{ war.opponentScore }}</td>
+                    <td class="player player-right">
+                         <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ war.opponentCountry | lower  ~ '.gif') }}" alt="{{ war.opponentCountry }}" class="flag" />
+                        {{ war.opponentName }}
+                    </td>
+                    <td class="date">{{ war.date.format('d m Y') }}</td>
+                    <td class="view">
+                        <a href="{{ url('war_show', { 'war_id': war.id }) }}"><img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/watch.png') }}" alt="{{ "details" | trans }}"></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="spacer"></div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+{% endblock %}

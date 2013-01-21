@@ -1,0 +1,71 @@
+@import "0-reset.css";
+@import "1-global";
+@import "1-skeleton.css";
+@import "2-header.css";
+@import "3-content.css";
+@import "4-left.css";
+@import "4-right.css";
+
+/* -------------------------------------------------------------------
+// admin
+// ------------------------------------------------------------------*/
+.admin_actions
+{
+    float:right;
+}
+
+/* -------------------------------------------------------------------
+// markItUp!
+// ------------------------------------------------------------------*/
+.markItUp .markItUpButton1 a {
+	background-image:url(../images/wysiwyg/h1.png);
+}
+.markItUp .markItUpButton2 a {
+	background-image:url(../images/wysiwyg/paragraph.png);
+}
+.markItUp .markItUpButton3 a {
+	background-image:url(../images/wysiwyg/bold.png);
+}
+.markItUp .markItUpButton4 a {
+	background-image:url(../images/wysiwyg/italic.png);
+}
+.markItUp .markItUpButton5 a {
+	background-image:url(../images/wysiwyg/stroke.png);
+}
+
+.markItUp .markItUpButton6 a {
+	background-image:url(../images/wysiwyg/picture.png);
+}
+.markItUp .markItUpButton7 a {
+	background-image:url(../images/wysiwyg/link.png);
+}
+.markItUp .markItUpButton8 a {
+	background-image:url(../images/wysiwyg/date.png);
+}
+
+.markItUp .clean a {
+	background-image:url(../images/wysiwyg/clean.png);
+}
+.markItUp .preview a {
+	background-image:url(../images/wysiwyg/preview.png);
+}
+
+/* -------------------------------------------------------------------
+// footer
+// ------------------------------------------------------------------*/
+div#footer
+{ 
+    height: 150px;
+    clear: both;
+    background: none repeat scroll 0% 0% white;
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    position: relative;
+    bottom: 0px;
+}
+div#footer li.footer-item-category { float: left; padding: 10px; width: 204px; border-left: 1px solid #EEE; }
+div#footer li.footer-item-category p { color: #395674; font-weight: bold; margin-bottom: 3px; }
+div#footer li.footer-item-category li { color: #888; padding: 2px 0 2px 10px; }
+div#footer a, div#footer strong { font-weight: normal; }
+

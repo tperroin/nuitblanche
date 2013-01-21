@@ -1,0 +1,82 @@
+{% block textarea_widget %}
+{% spaceless %}
+    <textarea {{ block('attributes') }}>{{ value }}</textarea>
+{% endspaceless %}
+{% endblock textarea_widget %}
+
+{% block datetime_widget %}
+{% spaceless %}
+    <div class="select-datetime" {{ block('attributes') }}>
+        {{ form_errors(form.date) }}
+        {{ form_errors(form.time) }}
+        {{ form_widget(form.date) }}
+        {{ form_widget(form.time) }}
+    </div>
+{% endspaceless %}
+{% endblock datetime_widget %}
+
+{% block date_widget %}
+{% spaceless %}
+    {{ date_pattern|replace({
+        '{{ year }}': form_widget(form.year, { 'attr': { 'class': 'select-date-year' } }),
+        '{{ month }}': form_widget(form.month, { 'attr': { 'class': 'select-date-month' } }),
+        '{{ day }}': form_widget(form.day, { 'attr': { 'class': 'select-date-day' } }),
+    })|raw }}
+{% endspaceless %}
+{% endblock date_widget %}
+
+{% block time_widget %}
+{% spaceless %}
+    @
+    {{ form_widget(form.hour, { 'attr': { 'class': 'select-time-hour' } }) }}
+    :
+    {{ form_widget(form.minute, { 'attr': { 'class': 'select-time-minutes' } }) }}
+{% endspaceless %}
+{% endblock time_widget %}
+
+
+{% block file_widget %}
+{% spaceless %}
+    <div class="input-file" {{ block('attributes') }}>
+        {{ form_widget(form) }}
+    </div>
+{% endspaceless %}
+{% endblock file_widget %}
+
+{% block field_rows %}
+{% spaceless %}
+    {% for child in form.children %}
+        {{ form_row(child) }}
+    {% endfor %}
+    {{ form_errors(form) }}
+{% endspaceless %}
+{% endblock field_rows %}
+
+{% block field_row %}
+{% spaceless %}
+    <div class="{% if form.children | length > 0 %}as-children{% endif %}{% if errors | length > 0 %}error{% endif %}">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    </div>
+{% endspaceless %}
+{% endblock field_row %}
+
+{% block field_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+    <ul class="error-message">
+        {% for error in errors %}
+            <li>{{ error.messageTemplate|trans(error.messageParameters, 'validators') }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endspaceless %}
+{% endblock field_errors %}
+
+{% block attributes %}
+{% spaceless %}
+    id="{{ id }}" name="{{ full_name  }}"{% if read_only %} disabled="disabled"{% endif %} {% if max_length %} maxlength="{{ max_length }}"{% endif %}
+    {% for attrname,attrvalue in attr %}{{attrname}}="{{attrvalue}}" {% endfor %}
+{% endspaceless %}
+{% endblock attributes %}

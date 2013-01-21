@@ -1,0 +1,8 @@
+
+ihqs_nuitblanche:
+    resource: "@IHQSNuitBlancheBundle/Resources/config/routing.yml"
+
+
+
+
+

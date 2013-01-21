@@ -1,0 +1,81 @@
+<ul class="round">
+
+    {% for group in round.groups %}
+    {% set group_index = loop.index %}
+    <li>
+        <h4>{{ group.name }}</h4>
+        <ul class="group">
+
+        {% for match in group.orderedMatches %}
+            {% set p1_class = match.player1 ? "phover player-" ~ match.player1.id : "" %}
+            {% set p2_class = match.player1 ? "phover player-" ~ match.player2.id : "" %}
+            {% set winner_class = match.winnerPlayer ? "phover player-" ~ match.winnerPlayer.id : "" %}
+
+            {% if loop.index is divisibleby(2) %}
+            <li class="linker linker-{{ group_index }}">
+                <div class="{{ winner_class }} linker"></div>
+            </li>
+            {% else %}
+            <li class="{{ winner_class }} separator-{{ group_index }}"></li>
+            {% endif %}
+            
+            <li>
+                <div class="players">
+                    <p class="p1 {{ p1_class }}">
+                       {% include "IHQSTournamentBundle:Player:_display.html.twig" with {'player' : match.player1 } %}
+                    </p>
+                    <p class="p2 {{ p2_class }}">
+                       {% include "IHQSTournamentBundle:Player:_display.html.twig" with {'player' : match.player2 } %}
+                    </p>
+                </div>
+                <div class="scores">
+                    <p class="p1 {{ p1_class }}">
+                        {% if match.player1 %}{{ match.player1Score }}{% endif %}
+                    </p>
+                    <p class="p2 {{ p2_class }}">
+                        {% if match.player2 %}{{ match.player2Score }}{% endif %}
+                    </p>
+                </div>
+                <div class="{{ winner_class }} linker linker-{% if group_index == round.groups | length %}last{% elseif loop.index is divisibleby(2) %}top{% else %}bottom{% endif %}"></div>
+            </li>
+
+            {% if group_index != round.groups | length %}
+                {% if loop.index is not divisibleby(2) %}
+                <li class="linker linker-{{ group_index }}">
+                    <div class="{{ winner_class }} linker"></div>
+                </li>
+                {% else %}
+                <li class="{{ winner_class }} separator-{{ group_index }}"></li>
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+        </ul>
+    </li>
+
+    {% endfor %}
+</ul>
+<div class="spacer"></div>
+
+<script type="text/javascript">
+    $('.phover')
+        .mouseover(function()
+        {
+            var classes = $(this).attr('class');
+            var regex = /player-[0-9]+/i;
+
+            $('.' + classes.match(regex))
+                .css('font-weight', 'bold')
+                .css('border-color', 'black')
+                
+        })
+        .mouseout(function()
+        {
+            var classes = $(this).attr('class');
+            var regex = /player-[0-9]+/i;
+
+            $('.' + classes.match(regex))
+                .css('font-weight', 'normal')
+                .css('border-color', 'gray')
+        });
+</script>

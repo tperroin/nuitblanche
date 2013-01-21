@@ -1,0 +1,263 @@
+#header
+{
+    background: url(../images/banner_fond.png) no-repeat;
+    background-size: length;
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    z-index:50;
+    with: 900px;
+}
+
+#header h1
+{
+    float: left;
+    height: 100px;
+    width: 150px;
+    margin-left: 20px;
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    background: url(../images/logo.png) 0 0 no-repeat;
+    margin-bottom: 0;
+}
+#header h1 span
+{
+    display: none;
+}
+#header .baseline
+{
+    position: absolute;
+    color: white;
+    font-family: 'Give You Glory', cursive;
+    font-size: 22px;
+    top: 70px;
+    margin-left: 10px;
+}
+#header .lang
+{
+    float: right;
+    padding: 10px 20px 0 0;
+}
+
+#header .lang li
+{
+    display: inline-block;
+}
+#header .lang li a
+{
+    width: 16px;
+    height: 11px;
+    display: inline-block;
+}
+#header .lang li a span
+{
+    display: none;
+}
+#header .lang li a.fr
+{
+    background: url(../images/flags/fr.gif);
+}
+#header .lang li a.en
+{
+    background: url(../images/flags/uk.gif);
+}
+
+#header .block-login
+{
+    width: 150px;
+    height: 90px;
+
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+
+    position: relative;
+    top: 31px;
+    left: 730px;
+}
+#header .block-login div.error
+{
+    position: absolute;
+    padding: 3px;
+    background: none repeat scroll 0% 0% rgba(255, 0, 0, 0.5);
+    border: 1px solid rgb(255, 0, 0);
+    z-index: 2;
+    top: 88px;
+}
+#header form fieldset,
+#header .block-login div.log
+{
+    position: absolute;
+    margin: 10px;
+    color: white;
+}
+
+#header .block-login div.log div.userdata
+{
+    float: left;
+    margin-left: 5px;
+}
+
+#header .block-login div.log span.username
+{
+    font-weight: bold;
+}
+
+#header .block-login img.avatar
+{
+    width: 40px;
+    height: 40px;
+    float: left;
+    border: 1px solid #888;
+}
+
+#header form fieldset legend,
+#header form label
+{
+    display: none;
+}
+#header form p
+{
+    margin: 6px 0;
+}
+#header form p input
+{
+    width: 124px;
+    padding: 2px;
+    height: 14px;
+}
+#header form p input.submit
+{
+    background: #395674;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    width: 130px;
+    height: 18px;
+    padding: 0;
+}
+#header ul.user-menu
+{
+    padding: 2px;
+    margin: 6px 0;
+    background: #395674;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    width: 130px;
+    height: 18px;
+    overflow: hidden;
+
+    transition: height 1s;
+}
+#header ul.user-menu:hover
+{
+    height: auto;
+}
+#header ul.user-menu li
+{
+    border-bottom: 1px solid white;
+    line-height: 18px;
+    list-style: circle inside none;
+}
+#header ul.user-menu li a
+{
+    color: white;
+    text-align: left;
+    font-weight: normal;
+}
+#header ul.user-menu li.first
+{
+    list-style: none;
+    text-align: center;
+    border: 0;
+}
+#header ul.user-menu li.last
+{
+    border: 0; 
+}
+
+div.register a
+{
+    display: block;
+    background: #395674;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    width: 148px;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    margin-bottom: 20px;
+
+    transition: background 2s;
+    -o-transition: background 2s;
+    -moz-transition: background 2s;
+    -webkit-transition: background 2s;
+}
+
+div.register a:hover
+{
+    background: -webkit-gradient(linear, left top, right top, from(#ddd), to(#395674));
+    background: -moz-linear-gradient(left,#ddd,#395674);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=1, startColorstr=#ddd, endColorstr=#395674)";
+}
+
+#header ul.menu
+{
+    z-index: 50;
+    float: left;
+    clear: both;
+    background: white;
+
+    width: 890px;
+    height: 40px;
+
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+
+    padding: 0 10px;
+    margin-left: -5px;
+}
+#header ul.menu a
+{
+    font-weight: bold;
+}
+#header ul.menu a.disabled
+{
+    font-weight: normal;
+}
+#header ul.menu li
+{
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 20px;
+}
+#header ul.menu li.first
+{
+    padding-left: 10px;
+}
+#header ul.menu last
+{
+    padding-right: 10px;
+}
+
+li.stream-live
+{
+    background: url("/bundles/ihqsnuitblanche/images/ico/result_win.gif") no-repeat scroll 8px 15px transparent;
+}
+ul.filters-video li.stream-live,
+ul.filters-video li.stream-off
+{
+    background-position: 3px 3px;
+    padding-left: 16px;
+}
+
+li.stream-off
+{
+    background: url("/bundles/ihqsnuitblanche/images/ico/result_loss.gif") no-repeat scroll 8px 15px transparent;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Twig -->
+        <service id="twig.extension.nb.inner_blocks" class="IHQS\NuitBlancheBundle\Twig\Extension\InnerBlocksExtension" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="twig.loader" />
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="twig.extension.user" class="IHQS\NuitBlancheBundle\Twig\Extension\UserExtension" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="security.context" on-invalid="ignore" />
+        </service>
+
+        <!-- Processor -->
+        <service id="nb.replay.processor" class="IHQS\NuitBlancheBundle\Processor\ReplayProcessor">
+            <argument type="service" id="nb.entity_manager" />
+        </service>
+
+        <!-- Event listeners -->
+        <service id="nb.controller.listener" class="IHQS\NuitBlancheBundle\ControllerListener">
+            <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="nb.doctrine.listener.game" class="IHQS\NuitBlancheBundle\EventSubscriber\GameEventSubscriber">
+            <tag name="doctrine.event_subscriber" connection="default" />
+        </service>
+
+        <service id="nb.doctrine.listener.gameplayer" class="IHQS\NuitBlancheBundle\EventSubscriber\GamePlayerEventSubscriber">
+            <tag name="doctrine.event_subscriber" connection="default" />
+        </service>
+
+        <service id="nb.doctrine.listener.player" class="IHQS\NuitBlancheBundle\EventSubscriber\SC2ProfileEventSubscriber">
+            <tag name="doctrine.event_subscriber" connection="default" />
+        </service>
+
+        <!-- Validators -->
+        <service id="validator.unique.unique" class="IHQS\NuitBlancheBundle\Validator\UniqueValidator">
+            <argument type="service" id="nb.entity_manager" />
+            <tag name="validator.constraint_validator" alias="Unique" />
+        </service>
+    </services>
+</container>

@@ -1,0 +1,32 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}
+    <img src="{% if news.team %}{{ news.team.icon }}{% else %}{{ news.teamGame.icon }}{% endif %}" class="flag" />
+    <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ news.lang  ~ '.gif') }}" alt="{{ news.lang }}" class="flag" />
+
+    {{ news.title }}
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="admin_actions">
+        <a class="edit" href="{{ url('contribute_news_edit', {'news_id': news.id}) }}">({{ "edit" | trans }})</a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% include "IHQSNuitBlancheBundle:News:details.html.twig" with { 'news': news } %}
+    <br />
+    <h2>{{ "Comments" | trans }}</h2>
+    {% if news.comments | length > 0 %}
+        <ol class="comments">
+        {% for comment in news.comments %}
+            {% include "IHQSNuitBlancheBundle:News:_commentShow.html.twig" with { 'comment': comment, 'number' : loop.index } %}
+        {% endfor %}
+        </ol>
+    {% else %}
+        <p>
+            <em>{{ "no comment posted yet" | trans }}</em>
+        </p>
+        <br />
+    {% endif %}
+    {% render  "IHQSNuitBlancheBundle:News:_commentNew" with { 'news': news } %}
+{% endblock %}

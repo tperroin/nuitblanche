@@ -1,0 +1,31 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "Team list" | trans }}{% endblock %}
+
+{% block content %}
+    {% for team in teams %}
+
+        <a name="{{ team.name }}">
+            <h2>{{ team.name }}</h2>
+        </a>
+
+        {% for user in team.players %}
+        <div class="player-item {% if loop.index is even %}right{% endif %}">
+            <a href="{{ url('player_show', { 'user_id': user.id }) }}">
+                <div class="avatar-canvas">
+                    <img style="margin-left: -{{ user.avatarMargin }}px;" class="avatar" src="{{ user.avatarUrl }}" />
+                </div>
+                {% if team.teamGame.shortName == "sc2" and user.sc2 %}
+                    <h2><span>{{ user.sc2.sc2Account }} #{{ user.sc2.sc2Id }}</span></h2>
+                    <img class="race" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.sc2.sc2Race ~ '_fond.png') }}" />
+                {% elseif team.teamGame.shortName == "wow" and user.wow %}
+                    <h2><span>{{ user.wow.name }}</span></h2>
+                    <!--<img class="race" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.wow.race ~ '_fond.png') }}" />-->
+                {% endif %}
+            </a>
+        </div>
+        {% endfor %}
+
+        <div class="spacer"></div>
+    {% endfor %}
+{% endblock %}

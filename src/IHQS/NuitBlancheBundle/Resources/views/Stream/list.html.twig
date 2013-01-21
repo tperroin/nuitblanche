@@ -1,0 +1,37 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "Video archives" | trans }}{% endblock %}
+
+{% block content %}
+    <ul class="filters filters-video">
+        <li class="first">
+            <a href="{{ url('stream_list') }}" class="disabled">{{ "View archives" | trans }}</a>
+        </li>
+        <li class="last stream-{% render "IHQSNuitBlancheBundle:Stream:_status" %}"">
+            <a href="{{ url('stream_live') }}">Live</a>
+        </li>
+    </ul>
+    <br />
+
+    <ol class="comments videos">
+    {% for clip in clips %}
+        <li>
+            <a class="avatar" href="{{ url('stream_watch', {"clip_id": clip.guid}) }}">
+                <img class="avatar" src="{{ clip.thumbnailLow }}" />
+                <span class="play"></span>
+            </a>
+            <p class="meta">
+                #{{ loop.index }}
+                - {{ clip.pubDate.format('d/m/Y @ H:i') }}
+                - {{ clip.content.duration }}
+            <p>
+            <p>
+                <h3><a href="{{ url('stream_watch', {"clip_id": clip.guid}) }}">{{ clip.title }}</a></h3>
+                {{ clip.description }}
+            </p>
+        </li>
+    {% endfor %}
+    </ol>
+
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+{% endblock %}

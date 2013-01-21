@@ -1,0 +1,29 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}Next website upgrades{% endblock %}
+
+{% block content %}
+    {% for version, upgrades in items %}
+        <div class="upgrades">
+            <h2>{{ version }}</h2>
+            <ol>
+            {% for upgrade in upgrades %}
+                <li>{{ upgrade }}</li>
+            {% endfor %}
+            </ol>
+        </div>
+    {% endfor %}
+
+    <div class="upgrades">
+        <h2>Idea's box</h2>
+        <ol>
+        {% for idea in ideas %}
+            <li>{{ idea }}</li>
+        {% endfor %}
+        </ol>
+    </div>
+
+    <p>
+        If you have any other idea, feel free to mail me it at <strong>lysimaque (at) gmail (dot) com</strong>
+    </p>
+{% endblock %}

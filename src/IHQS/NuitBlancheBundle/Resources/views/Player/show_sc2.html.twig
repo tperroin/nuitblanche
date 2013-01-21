@@ -1,0 +1,301 @@
+    <ul class="filters">
+        <li class="first">
+            <a href="#info">{{ "Info" | trans }}</a>
+        </li>
+        <li>
+            <a href="#stats">{{ "Clan War Stats" | trans }}</a>
+        </li>
+        <li>
+            <a href="#bnet">{{ "Battle Net Stats" | trans }}</a>
+        </li>
+        <li>
+            <a href="#social">{{ "Social" | trans }}</a>
+        </li>
+        <li>
+            <a href="#wars">{{ "Wars History" | trans }}</a>
+        </li>
+        <li class="last">
+            <a href="#replays">{{ "Replays" | trans }}</a>
+        </li>
+    </ul>
+
+    <a name="info"></a>
+    <div class="player-item item-wide">
+        
+        <div class="avatar-canvas">
+            <style type="text/css">
+                div.player-item div.avatar-canvas img.avatar
+                {
+                    margin-left: -{{ user.avatarMargin }}px;
+                }
+            </style>
+            <img class="avatar" src="{{ user.avatarUrl }}" />
+        </div>
+        <h2><span>{{ user.sc2.sc2Account }}#{{ user.sc2.sc2Id }}</span></h2>
+        <ul class="short">
+            <li>
+                <span class="stat">{{ "name" | trans }}</span>
+                <span class="data">{{ user.firstName }} "<strong>{{ user.sc2.username }}</strong>" {{ user.lastName }}.</span>
+            </li>
+            <li>
+                <span class="stat">{{ "city" | trans }}</span>
+                <span class="data">
+                    {{ user.city }},
+                    <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ user.countryCode | lower  ~ '.gif') }}" alt="{{ user.countryCode }}" class="flag" />
+                    {{ user.country }}
+                </span>
+            </li>
+            <li>
+                <span class="stat">role</span>
+                <span class="data">{{ user.sc2.sc2Role }}</span>
+            </li>
+        </ul>
+        <img class="race" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.sc2.sc2Race ~ '_fond.png') }}" />
+    </div>
+
+    <div class="spacer"></div>
+
+    <a name="stats"></a>
+    <div class="sub-section stats">
+    <h2>{{ "Clan War Stats" | trans }}</h2>
+        <ul class="short">
+        <li>
+            <span class="stat">1on1</span>
+                <span class="data">
+                    {{ user.sc2.stats._1v1.wins }}-{{ user.sc2.stats._1v1.losses }}
+                    <div class="note-container">
+                        <span style="width: {{ 100 - user.sc2.stats._1v1.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - user.sc2.stats._1v1.ratio }}px;">{{user.sc2.stats._1v1.ratio }}%&nbsp;</span>
+                    </div>
+                </span>
+            </li>
+            <li>
+                <span class="stat">vs <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/protoss_icon.png') }}" /></span>
+                <span class="data">
+                    {{ user.sc2.stats._1v1protoss.wins }}-{{ user.sc2.stats._1v1protoss.losses }}
+                    <div class="note-container">
+                        <span style="width: {{ 100 - user.sc2.stats._1v1protoss.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - user.sc2.stats._1v1protoss.ratio }}px;">{{user.sc2.stats._1v1protoss.ratio }}%&nbsp;</span>
+                    </div>
+                </span>
+            </li>
+            <li>
+                <span class="stat">vs <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/terran_icon.png') }}" /></span>
+                <span class="data">
+                    {{ user.sc2.stats._1v1terran.wins }}-{{ user.sc2.stats._1v1terran.losses }}
+                    <div class="note-container">
+                        <span style="width: {{ 100 - user.sc2.stats._1v1terran.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - user.sc2.stats._1v1terran.ratio }}px;">{{user.sc2.stats._1v1terran.ratio }}%&nbsp;</span>
+                    </div>
+                </span>
+            </li>
+            <li>
+                <span class="stat">vs <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/zerg_icon.png') }}" /></span>
+                <span class="data">
+                    {{ user.sc2.stats._1v1zerg.wins }}-{{ user.sc2.stats._1v1zerg.losses }}
+                    <div class="note-container">
+                        <span style="width: {{ 100 - user.sc2.stats._1v1zerg.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - user.sc2.stats._1v1zerg.ratio }}px;">{{user.sc2.stats._1v1zerg.ratio }}%&nbsp;</span>
+                    </div>
+                </span>
+            </li>
+        </ul>
+        <ul class="long">
+            <li>
+                <span class="stat">2on2</span>
+                <span class="data">
+                    {{ user.sc2.stats._2v2.wins }}-{{ user.sc2.stats._2v2.losses }}
+                    <div class="note-container">
+                        <span style="width: {{ 100 - user.sc2.stats._2v2.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - user.sc2.stats._2v2.ratio }}px;">{{user.sc2.stats._2v2.ratio }}%&nbsp;</span>
+                    </div>
+                </span>
+            </li>
+            {% for team in user.sc2.get2v2Teams %}
+            <li>
+                <span class="stat long">
+                    w/
+                    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ team.allyRace ~ '_fond.png') }}" />
+                    {{ team.allyName }}
+                </span>
+                <span class="data">
+                    {{ team.wins }}-{{ team.losses }}
+                    <div class="note-container">
+                        <span style="width: {{ 100 - team.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - team.ratio }}px;">{{ team.ratio }}%&nbsp;</span>
+                    </div>
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="spacer"></div>
+    </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+
+    <div class="spacer"></div>
+
+    <a name="bnet"></a>
+    <div class="sub-section stats bnet">
+
+        <h2><span>{{ "Battle Net Stats" | trans }}</span></h2>
+        <ul class="short">
+            <li>
+                <span class="stat">solo</span>
+                <span class="data"></span>
+            </li>
+            {% if user.sc2.sc2Ranks.base is defined %}
+                {% for key,stats in user.sc2.sc2Ranks.base %}
+                <li>
+                    <span class="stat">{{ key ~ "on" ~ key | trans }}</span>
+                    <span class="data">
+                        <img class="bnet-rank" src="{{ asset(stats.leaguePic) }}" />
+                        {{ stats.wins }}-{{ stats.losses }}
+                        <div class="note-container">
+                            <span style="width: {{ 100 - stats.ratio }}px;"></span>
+                            <span class="note-ratio" style="margin-right: -{{ 100 - stats.ratio }}px;">{{ stats.ratio }}%&nbsp;</span>
+                        </div>
+                    </span>
+                </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+        <ul class="long">
+            <li>
+                <span class="stat">2on2</span>
+                <span class="data"></span>
+            </li>
+        {% if user.sc2.sc2Ranks._2v2teams is defined %}
+            {% for team in user.sc2.sc2Ranks._2v2teams %}
+            {% if loop.index <= 4 %}
+            <li>
+                <span class="stat long">w/
+                    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ team.members[0].fav_race ~ '_fond.png') }}" />
+                    {{ team.members[0].name }}
+                </span>
+                <span class="data">
+                    <img class="bnet-rank" src="{{ asset(team.leaguePic) }}" />
+                    {{ team.wins }}-{{ team.losses }}
+                    <div class="note-container">
+                        <span style="width: {{ 100 - team.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - team.ratio }}px;">{{ team.ratio }}%&nbsp;</span>
+                    </div>
+                </span>
+            </li>
+            {% endif %}
+            {% endfor %}
+        {% endif %}
+        </ul>
+        <div class="spacer"></div>
+    </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+
+    <div class="spacer"></div>
+
+    <a name="social"></a>
+    <div class="sub-section stats">
+        <h2>{{ "Social informations" | trans }}</h2>
+        <ul class="short">
+            <li>
+                <span class="stat long"><img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/site_esl.ico') }}" /> esl</span>
+                <span class="data">{% if user.sc2.sc2ProfileEsl %}<a href="http://www.esl.eu/fr/player/{{ user.sc2.sc2ProfileEsl }}/">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
+            </li>
+            <li>
+                <span class="stat long"><img class="ico" src="http://starcraft2.ingame.de/sc2cl/gfx/favicon.ico" /> sc2cl</span>
+                <span class="data">{% if user.sc2.sc2ProfileSc2cl %}<a href="http://starcraft2.ingame.de/sc2cl/?m=profile&userId={{ user.sc2.sc2ProfileSc2cl }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
+            </li>
+            <li>
+                <span class="stat long"><img class="ico" src="http://www.pandaria-wars.com/themes/dyy_2009/images/favicon.ico" /> pandaria</span>
+                <span class="data">{% if user.sc2.sc2ProfilePandaria %}<a href="http://www.pandaria-wars.com/index.php?file=Members&op=detail&autor={{ user.sc2.sc2ProfilePandaria }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
+            </li>
+        </ul>
+        <ul class="long">
+            {% if user.twitter %}
+            <li>
+                <span class="stat long"><img class="ico" src="http://twitter.com/phoenix/favicon.ico" /> twitter</span>
+                <span class="data">{% if user.twitter %}<a href="http://twitter.com/{{ user.twitter }}">@{{ user.twitter }}</a>{% else %}-{% endif %}</span>
+            </li>
+            {% endif %}
+            {% if user.facebook %}
+            <li>
+                <span class="stat long"><img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/site_fb.ico') }}" /> facebook</span>
+                <span class="data">{% if user.facebook %}<a href="{{ user.facebook }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
+            </li>
+            {% endif %}
+            {% if user.skype %}
+            <li>
+                <span class="stat long"><img class="ico" src="http://www.skypeassets.com/i/images/icons/favicon.ico" /> skype</span>
+                <span class="data">{% if user.skype %}<strong>{{ user.skype }}</strong>{% else %}-{% endif %}</span>
+            </li>
+            {% endif %}
+            {% if user.msn %}
+            <li>
+                <span class="stat long"><img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/site_msn.gif') }}" /> msn</span>
+                <span class="data">{% if user.publicMsn %}<strong>{{ user.publicMsn }}</strong>{% else %}-{% endif %}</span>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="spacer"></div>
+    </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+
+    <div class="spacer"></div>
+
+    <a name="wars"></a>
+    <div class="sub-section wars">
+        <h2>{{ "Wars History" | trans }}</h2>
+        <table>
+                <caption>{{ "Wars History" | trans }}</caption>
+                <thead></thead>
+                <tfoot></tfoot>
+                <tbody>
+                    {% for game in user.sc2.warGames %}
+                    <tr>
+                        <td class="team">
+                            <a href="{{ url('war_show', { 'war_id': game.war.id }) }}">
+                                <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/result_win.gif') }}" alt="win" />
+                                <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/FR.gif') }}" alt="fr" class="flag" />
+                                {{ game.war.opponentName }}
+                            </a>
+                        </td>
+                        <td class="war-score {{ game.war.result }}">{{ game.war.teamScore }}-{{ game.war.opponentScore }}</td>
+                        <td class="player player-left">
+                             {% for player in game.games[0].team1 %}
+                                {{ player.name }}
+                                <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
+                                <br />
+                             {% endfor %}
+                        </td>
+                        <td class="score match-{{ game.team1Result }}">{{ game.team1Score }}</td>
+                        <td class="separator"></td>
+                        <td class="score match-{{ game.team2Result }}">{{ game.team2Score }}</td>
+                        <td class="player player-right">
+                             {% for player in game.games[0].team2 %}
+                                <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
+                                {{ player.name }}
+                                <br />
+                             {% endfor %}
+                        </td>
+                        <td class="date">{{ game.games[0].date.format('d m Y') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+    </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+
+    <div class="spacer"></div>
+    <a name="replays"></a>
+    <div class="sub-section replays">
+        <h2>{{ "Replays" | trans }}</h2>
+        <table>
+            <caption>{{ "Replays" | trans }}</caption>
+            <thead></thead>
+            <tfoot></tfoot>
+            <tbody>
+                {% for replay in user.sc2.replays %}
+                {% include "IHQSNuitBlancheBundle:Replay:_row.html.twig" with { "replay" : replay } %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}

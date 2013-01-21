@@ -1,0 +1,16 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+    <ul class="filters">
+    {% for tag,game in user.profiles %}
+        <li class="{% if loop.first %}first{% endif %} {% if loop.last %}last{% endif %}">
+            <img src="/bundles/ihqsnuitblanche/images/ico/{{ tag }}.gif" class="flag" />
+            <a href="{{ url('player_show_profile', {'user_id': user.id, 'profile': tag}) }}">{{ game }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    {% include 'IHQSNuitBlancheBundle:Player:show_' ~ profile ~ '.html.twig' with { "user": user } %}
+{% endblock %}

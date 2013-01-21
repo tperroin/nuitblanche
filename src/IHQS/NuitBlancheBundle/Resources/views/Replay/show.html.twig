@@ -1,0 +1,110 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "Replay" | trans }} : {{ replay.game.team1Name }} vs {{ replay.game.team2Name }} - {{ replay.game.date.format('d m Y') }}{% endblock %}
+
+{% block content %}
+<ul class="action">
+    <li>
+        <a href="{{ url('replay_file_download', { "replay_id" : replay.id }) }}">
+            <img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/ico/save.png') }}" alt="download">
+            {{ "Download" | trans }}
+            ({{ replay.size }}Ko - {{ replay.downloads }} {{ "download" | trans }}{% if replay.downloads > 1 %}s{% endif %})
+        </a>
+    </li>
+</ul>
+
+<div class="replay-info">
+    <div class="players" style="height: {{ 60 * replay.game.team1 | length }}px">
+        <div class="team1-container">
+            {% for player in replay.game.team1 %}
+            <div class="team1">
+                <img class="race" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_fond.png') }}" />
+
+                <p>
+                    <span class="player" style="color: #{{ player.color }};">{{ player.name }}</span>
+                    <br />
+                    <span><strong>apm</strong> {{ player.apm }}</span>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="versus">
+                <span>vs</span>
+        </div>
+        <div class="team2-container">
+            {% for player in replay.game.team2 %}
+            <div class="team2">
+                <p>
+                    <span class="player" style="color: #{{ player.color }};">{{ player.name }}</span>
+                    <br />
+                    <span><strong>apm</strong> {{ player.apm }}</span>
+                </p>
+
+                <img class="race" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_fond.png') }}" />
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <hr />
+    <div class="game-info">
+        <h3>{{ "Game information" | trans }}</h3>
+        <ul class="info">
+            <li>
+                <span class="stat">{{ "map" | trans }}</span>
+                <span class="data">{{ replay.game.map }}</span>
+            </li>
+            <li>
+                <span class="stat">{{ "length" | trans }}</span>
+                <span class="data">{{ replay.normalizedLength }}</span>
+            </li>
+            <li>
+                <span class="stat">{{ "date" | trans }}</span>
+                <span class="data">{{ replay.game.date.format('d m Y') }}</span>
+            </li>
+        </ul>
+        <ul class="info">
+            <li>
+                <span class="stat">{{ "realm" | trans }}</span>
+                <span class="data">{{ replay.realm }}</span>
+            </li>
+            <li>
+                <span class="stat">{{ "version" | trans }}</span>
+                <span class="data">{{ replay.version }}</span>
+            </li>
+        </ul>
+        <div class="spacer"></div>
+        <div class="obs">
+            <span class="stat">{{ "obs" | trans }}</span>
+            <span class="data obs">{{ replay.obs }}</span>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <hr />
+    <div class="apm-chart">
+        <h3>{{ "APM Chart" | trans }}</h3>
+        <br />
+        <img class="chart" src="{{ replay.chart }}" />
+    </div>
+    <div class="spacer"></div>
+    <hr />
+    <div class="chat-log">
+        <h3>{{ "Chat Log" | trans }}</h3>
+        <ul class="log">
+            {% for log in replay.chatLog %}
+            <li>
+                {% set log_min = log.time // 60  %}
+                {% set log_sec = log.time % 60 %}
+                {% if log_min < 10 %}{% set log_min = "0" ~ log_min %}{% endif %}
+                {% if log_sec < 10 %}{% set log_sec = "0" ~ log_sec %}{% endif %}
+
+                <span class="time">{{ log_min }}:{{ log_sec }}</span>
+                <span style="color: #{{ log.color }};" class="name">{{ log.name }}</span>
+                <span class="message">{{ log.message }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="spacer"></div>
+</div>
+{% endblock %}

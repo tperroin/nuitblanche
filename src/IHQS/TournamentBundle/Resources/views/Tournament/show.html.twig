@@ -1,0 +1,45 @@
+{% extends "IHQSTournamentBundle::layout.html.twig" %}
+
+{% block content %}
+<h2>{{ tournament.name }}</h2>
+
+<ul class="info">
+   <li>
+       <span class="key">{{ "date" | trans }}</span>
+       <span class="val">{{ tournament.date.format('Y/m/d H:i') }}</span>
+   </li>
+   <li>
+       <span class="key">{{ "players limit" | trans }}</span>
+       <span class="val">{{ tournament.rounds[0].playerLimit }}</span>
+   </li>
+   <li>
+       <span class="key">{{ "players inscribed" | trans }}</span>
+       <span class="val">{{ tournament.subscribers | length }}</span>
+   </li>
+   <li>
+       <span class="key">{{ "has seeds" | trans }}</span>
+       {% set hasSeeds = tournament.hasSeeds ? 'yes' : 'no' %}
+       <span class="val">{{ hasSeeds | trans }}</span>
+   </li>
+</ul>
+
+<div class="description">
+    <h3>{{ "Description" | trans }}</h3>
+    <p>{{ tournament.description }}</p>
+</div>
+
+<div class="rules">
+    <h3>{{ "Rules" | trans }}</h3>
+    <p>{{ tournament.rules }}</p>
+</div>
+
+<div class="player-list">
+    <h3>{{ "Player List" | trans }}</h3>
+    <ul>
+    {% for player in tournament.subscribers %}
+        <li class="{% if loop.index is divisibleby(4) %}eol{% endif %}">{{ player.username }}</li>
+    {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

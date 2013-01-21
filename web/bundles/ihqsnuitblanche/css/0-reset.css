@@ -1,0 +1,138 @@
+/******************************************************************************************
+	
+	Feuille de style reinitialisant les styles de facon homog�ne quelque soit le navigateur
+	
+******************************************************************************************/
+
+html {
+	height:100%;
+	width:100%;
+}
+
+body {
+	width:100%;
+	margin:0;
+	padding:0;
+	position:relative;
+}
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td
+input,textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+}
+table {
+	border-spacing:0;
+	width: 100%;
+	position: relative;
+	border-collapse: collapse;
+	vertical-align: top;
+}
+fieldset,img,object {
+	border-width: 0px;
+}
+input,textarea,select,button,table,hr,iframe {
+	border-width: 0px;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+	vertical-align: top;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:"";
+}
+blockquote, q {
+	quotes: "" "";
+}
+abbr,acronym {
+	border:0;
+	font-variant:normal;
+}
+/* to preserve line-height and selector appearance */
+sup {
+	vertical-align:text-top;
+}
+sub {
+	vertical-align:text-bottom;
+}
+input,textarea,select {
+	font-family:inherit;
+	font-size:inherit;
+	font-weight:inherit;
+}
+
+textarea {
+	overflow: auto;	
+}
+/*to enable resizing for IE
+input,textarea,select {
+	*font-size:100%;
+}*/
+/*because legend doesn't inherit in IE */
+legend {
+	color:#000;
+}
+
+ol, ul, li {
+	list-style: none;
+}
+
+/* for geniebuilder*/
+font {
+	display: block;	
+}
+
+dd {
+	text-indent: 0;
+}
+em {
+	font-weight: normal;
+	font-style: italic;	
+}
+
+/*bordure de l'editeur de texte*/
+body.defaultBodyClass {
+	border:1px solid #929292;	
+}
+
+/*positionnement des boutons editions de paragraphe */
+div._gb_para_control {
+	margin-top:-20px;
+	position:relative;	
+}
+
+
+/*
+remember to define focus styles! 
+:focus {
+	outline: 0;
+}
+
+html {
+	color: black;background: white;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+*/
+
